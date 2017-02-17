@@ -58,10 +58,11 @@ html {
   align-items: center;
   justify-content: space-between;
   flex: wrap;
-  padding: 16px; }
+  padding: 4px 16px 4px 16px; }
 
 .nav-main {
-  display: flex; }
+  display: flex;
+  align-items: center; }
 
 .nav-main-item {
   display: inline-block;
@@ -70,7 +71,8 @@ html {
   color: black; }
 
 body {
-  font-size: 24px; }
+  font-size: 24px;
+  -webkit-font-smoothing: antialiased; }
 
 .wrap {
   margin: auto;
@@ -81,7 +83,7 @@ body {
   margin-top: 32px; }
 
 .pageContent > * + * {
-  margin-top: 32px; }
+  margin-top: 56px; }
 
 .pageHeading {
   color: white;
@@ -94,9 +96,13 @@ body {
   border-radius: 8px;
   font-family: "Raleway", sans-serif; }
 
-.contentBody > p {
-  margin-bottom: 12px;
-  text-indent: 3em; }
+.contentBody_center {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.contentBody > * + * {
+  margin-top: 16px; }
 
 .logo {
   padding: 12px;
@@ -106,3 +112,18 @@ body {
 .logo > a {
   text-decoration: none;
   color: black; }
+
+.button {
+  display: block;
+  color: white;
+  font-size: 24px;
+  background: orange;
+  border: 1px solid white;
+  border-radius: 4px;
+  outline: none; }
+
+.button:active {
+  background: #996300; }
+
+.icon {
+  width: 30px; }

@@ -1,5 +1,6 @@
 body {
-	font-size: $FONT_SIZE
+	font-size: $FONT_SIZE;
+	 -webkit-font-smoothing: antialiased;
 }
 
 .wrap {
@@ -14,7 +15,7 @@ body {
 
 }
 .pageContent > * + * {
-	margin-top: 32px;
+	margin-top: 56px;
 }
 
 .pageHeading {
@@ -27,11 +28,15 @@ body {
 	background: $BG;
 	padding: $PRIMARY_PADDING;
 	border-radius: 8px;
-
 	font-family: $PRIMARY_FONT;
 }
 
-.contentBody > p {
-	margin-bottom: 12px;
-	text-indent: 3em;
+.contentBody_center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.contentBody > * + * {
+	margin-top: 16px;
 }

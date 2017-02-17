@@ -12,11 +12,12 @@
 	justify-content: space-between;
 	flex: wrap;
 
-	padding: 16px;
+	padding: 4px 16px 4px 16px;
 }
 
 .nav-main {
 	display: flex;
+	align-items: center;
 }
 
 .nav-main-item {
