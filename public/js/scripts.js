@@ -1,4 +1,3 @@
-alert('hi there!');
 /*!
  * jQuery JavaScript Library v3.1.1
  * https://jquery.com/
@@ -10219,3 +10218,11 @@ if ( !noGlobal ) {
 
 return jQuery;
 } );
+
+var $mainSearch = $("#js-mainSearch"),
+	$searchIcon = $("#js-searchIcon");
+
+$searchIcon.on("click", function() {
+	console.log($searchIcon, "clicked");
+	$mainSearch.toggleClass("searchBar_inactive");
+})

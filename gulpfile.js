@@ -16,7 +16,7 @@ gulp.task('watch-sass', function() {
 });
 
 gulp.task('jscripts', function() {
-	return gulp.src('js/**/*.js')
+	return gulp.src(['js/jquery-3.1.1.js','js/**/*.js'])
 		.pipe(concat('scripts.js'))
 		.pipe(gulp.dest('public/js'))
 });

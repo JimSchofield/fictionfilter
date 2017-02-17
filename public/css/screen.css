@@ -139,12 +139,8 @@ body {
   outline: none; }
 
 .textInput-mainSearch {
-  width: 100%;
-  overflow: hidden; }
+  width: 100%; }
 
-.searchBar {
+.searchBar_inactive {
   height: 0px;
   overflow: hidden; }
-
-.searchBar_active {
-  height: initial; }

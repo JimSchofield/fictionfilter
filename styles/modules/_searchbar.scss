@@ -8,12 +8,12 @@
 
 .textInput-mainSearch {
 	width: 100%;
-	overflow: hidden;
+
 }
 .searchBar {
+	
+}
+.searchBar_inactive {
 	height: 0px;
 	overflow:hidden;
-}
-.searchBar_active {
-	height: initial;
 }
