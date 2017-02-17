@@ -38,5 +38,9 @@ body {
 }
 
 .contentBody > * + * {
-	margin-top: 16px;
+	margin-top: 32px;
+}
+
+.primaryText_center {
+	text-align: center;
 }

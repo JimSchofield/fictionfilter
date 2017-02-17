@@ -51,7 +51,7 @@ html {
 .nav {
   width: 100%;
   background: rgba(255, 255, 255, 0.7);
-  font-family: "Della Respira", serif; }
+  font-family: "Raleway", sans-serif; }
 
 .nav-inner {
   display: flex;
@@ -102,7 +102,10 @@ body {
   align-items: center; }
 
 .contentBody > * + * {
-  margin-top: 16px; }
+  margin-top: 32px; }
+
+.primaryText_center {
+  text-align: center; }
 
 .logo {
   padding: 12px;
@@ -127,3 +130,21 @@ body {
 
 .icon {
   width: 30px; }
+
+.textInput {
+  display: block;
+  border: none;
+  padding: 16px;
+  font-size: 24px;
+  outline: none; }
+
+.textInput-mainSearch {
+  width: 100%;
+  overflow: hidden; }
+
+.searchBar {
+  height: 0px;
+  overflow: hidden; }
+
+.searchBar_active {
+  height: initial; }

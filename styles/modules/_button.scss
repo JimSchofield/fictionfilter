@@ -1,0 +1,12 @@
+.button {
+	display: block;
+	color: white;
+	font-size: $FONT_SIZE;
+	background: orange;
+	border: 1px solid white;
+	border-radius: 4px;
+	outline: none;
+}
+.button:active {
+	background: darken(orange,20%);
+}
