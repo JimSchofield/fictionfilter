@@ -1,1 +1,1 @@
-alert("loaded");
+alert('hi there!');
