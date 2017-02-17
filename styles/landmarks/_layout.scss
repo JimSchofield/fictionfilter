@@ -1,0 +1,37 @@
+body {
+	font-size: $FONT_SIZE
+}
+
+.wrap {
+	margin: auto;
+	max-width: 800px;
+
+}
+
+.pageContent {
+	padding: $PRIMARY_PADDING;
+	margin-top: 32px;
+
+}
+.pageContent > * + * {
+	margin-top: 32px;
+}
+
+.pageHeading {
+	color: white;
+	font-size: $HEADER_FONT_SIZE;
+	font-family: $PRIMARY_FONT;
+}
+
+.contentBody {
+	background: $BG;
+	padding: $PRIMARY_PADDING;
+	border-radius: 8px;
+
+	font-family: $PRIMARY_FONT;
+}
+
+.contentBody > p {
+	margin-bottom: 12px;
+	text-indent: 3em;
+}

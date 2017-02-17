@@ -1,0 +1,10 @@
+.logo {
+	padding: 12px;
+	font-size: $LOGO_FONT_SIZE;
+	font-family: $LOGO_FONT;
+}
+
+.logo > a {
+	text-decoration: none;
+	color: $NAV_TEXT_COLOR;
+}
