@@ -40,3 +40,69 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0; }
+
+html {
+  background: url("../back.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+.nav {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  font-family: "Della Respira", serif; }
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: wrap;
+  padding: 16px; }
+
+.nav-main {
+  display: flex; }
+
+.nav-main-item {
+  display: inline-block;
+  padding: 8px;
+  text-decoration: none;
+  color: black; }
+
+body {
+  font-size: 24px; }
+
+.wrap {
+  margin: auto;
+  max-width: 800px; }
+
+.pageContent {
+  padding: 24px;
+  margin-top: 32px; }
+
+.pageContent > * + * {
+  margin-top: 32px; }
+
+.pageHeading {
+  color: white;
+  font-size: 40px;
+  font-family: "Raleway", sans-serif; }
+
+.contentBody {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 24px;
+  border-radius: 8px;
+  font-family: "Raleway", sans-serif; }
+
+.contentBody > p {
+  margin-bottom: 12px;
+  text-indent: 3em; }
+
+.logo {
+  padding: 12px;
+  font-size: 40px;
+  font-family: "Della Respira", serif; }
+
+.logo > a {
+  text-decoration: none;
+  color: black; }

@@ -1,14 +1,15 @@
 div.nav
-	div.logo 
-		a(href="/") Bookkeeper
-	ul
-		li 
-			a(href="/about") About
-		li 
-			a(href="/books") Books
-		li 
-			a(href="/profile") Profile
-		li 
-			a(href="/register") Register
-	div.nav-login
-		button Login
+	div.nav-inner
+		div.logo 
+			a(href="/") Fiction Filter
+		ul.nav-main
+			li
+				a(href="/about").nav-main-item About
+			li
+				a(href="/books").nav-main-item Books
+			li
+				a(href="/profile").nav-main-item Profile
+			li
+				a(href="/register").nav-main-item Register
+		div.nav-login.button-primary
+			button Login

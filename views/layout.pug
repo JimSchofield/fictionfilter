@@ -3,8 +3,10 @@ html
 	head
 		title=title
 		link(rel='stylesheet' href='css/screen.css')
+		link(href="https://fonts.googleapis.com/css?family=Della+Respira|Raleway" rel="stylesheet")
 	body
-		include partials/_nav.pug
+		header
+			include partials/_nav.pug
 		div.wrap
 			block content
 				h2 Template did not load correctly

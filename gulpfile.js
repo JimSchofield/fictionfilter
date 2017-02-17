@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var nodemon = require('gulp-nodemon');
 
 gulp.task('sass', function() {
 	gulp.src('styles/**/*.scss')
@@ -7,6 +8,12 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest('./public/css/'));
 });
 
-gulp.task('default', function() {
-	gulp.watch('styles/**/*.scss',['sass']);
+gulp.task('watch-sass', function() {
+	gulp.watch('./styles/**/*.scss',['sass']);
+});
+
+gulp.task('default',['watch-sass'], function() {
+	return nodemon({
+		script: 'app.js',
+	});
 });

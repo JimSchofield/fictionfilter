@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var routes = require('./routes/routes');
 
-var port = 7777;
+var port = 3000;
 
 //serve up public
 app.use(express.static('public'));
