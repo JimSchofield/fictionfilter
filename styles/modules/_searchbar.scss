@@ -11,9 +11,12 @@
 
 }
 .searchBar {
-	
+	max-height: 60px;
+	overflow: hidden;
+	transition: max-height 1s;
+
 }
 .searchBar_inactive {
-	height: 0px;
-	overflow:hidden;
+	max-height: 0px;
+	transition: max-height 1s;
 }
