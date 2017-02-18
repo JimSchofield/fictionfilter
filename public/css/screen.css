@@ -96,6 +96,13 @@ body {
   border-radius: 8px;
   font-family: "Raleway", sans-serif; }
 
+.contentBody ul {
+  list-style-type: circle;
+  list-style-position: inside; }
+
+.contentBody ul > * + * {
+  padding-top: 8px; }
+
 .contentBody_center {
   display: flex;
   flex-direction: column;
@@ -129,14 +136,8 @@ body {
   background: #996300; }
 
 .icon {
-  width: 30px; }
-
-.textInput {
-  display: block;
-  border: none;
-  padding: 16px;
-  font-size: 24px;
-  outline: none; }
+  width: 30px;
+  padding: 8px; }
 
 .textInput-mainSearch {
   width: 100%; }
@@ -149,3 +150,10 @@ body {
 .searchBar_inactive {
   max-height: 0px;
   transition: max-height 1s; }
+
+.textInput {
+  display: block;
+  border: none;
+  padding: 16px;
+  font-size: 24px;
+  outline: none; }
