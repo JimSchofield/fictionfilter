@@ -4,7 +4,7 @@ block content
 	section.pageContent
 		h1.pageHeading Register
 		div.contentBody.contentBody_center
-			form(method='POST' action='/users')
+			form(method='POST' action='/users').registerForm
 				div.form-group
 					label(for="username") Username
 					input(type=text, name="username", id="username" placeholder="What people will see").textInput

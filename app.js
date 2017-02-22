@@ -6,12 +6,13 @@ var app = express();
 var routes = require('./routes/routes');
 var apiRoutes = require('./api/index');
 
-var jsonParser = require('body-parser').json;
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var port = 3000;
 
-app.use(jsonParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 // DB

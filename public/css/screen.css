@@ -57,7 +57,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex: wrap;
+  flex-wrap: wrap;
   padding: 4px 16px 4px 16px; }
 
 .nav-main {
@@ -69,6 +69,9 @@ html {
   padding: 8px;
   text-decoration: none;
   color: black; }
+
+* {
+  box-sizing: border-box; }
 
 body {
   font-size: 24px;
@@ -151,15 +154,29 @@ body {
   max-height: 0px;
   transition: max-height 1s; }
 
+.registerForm {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
 form > * + * {
   margin-top: 16px; }
 
+input {
+  display: block;
+  width: 100%; }
+
 .textInput {
   display: block;
+  width: 100%;
   border: none;
   padding: 16px;
   font-size: 24px;
   outline: none; }
+
+.form-group {
+  width: 100%; }
 
 .form-group > * + * {
   margin-top: 16px; }
