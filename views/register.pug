@@ -3,6 +3,13 @@ extends ./layout.pug
 block content
 	section.pageContent
 		h1.pageHeading Register
-		div.contentBody
+		div.contentBody.contentBody_center
 			form
+				label Username
 				input(type=text).textInput
+				label E-mail
+				input(type=text).textInput
+				label Password
+				input(type=text).textInput
+				button(type=submit).button Register!
+

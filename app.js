@@ -1,8 +1,13 @@
+'use strict';
+
 var express = require('express');
 var app = express();
+
 var routes = require('./routes/routes');
 var apiRoutes = require('./api/index');
+
 var jsonParser = require('body-parser').json;
+var mongoose = require('mongoose');
 
 var port = 3000;
 
@@ -13,7 +18,7 @@ app.use(jsonParser());
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost:27017/qa');
+mongoose.connect('mongodb://localhost:27017/fictionfilter');
 
 var db = mongoose.connection;
 
