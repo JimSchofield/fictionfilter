@@ -10,8 +10,36 @@ var User = require('./usermodel').User;
 
 //POST: /users/:name create a new user
 //TODO: incorporate user authent and author
-router.post('/users', function(req, res) {
-	
+router.post('/users', function(req, res, next) {
+
+	console.log(req.body.username);
+	console.log(req.body.email);
+	console.log(req.body.password);
+
+	if (req.body.username &&
+		req.body.email &&
+		req.body.password) {
+
+		var userData = {
+			username: req.body.username,
+			email: req.body.email,
+			password: req.body.password
+		}
+
+		User.create(userData, function(err, user) {
+			if(err) { 
+				return next(err);
+			} else {
+				res.send("It's a success!")
+				console.log(userData);
+			}
+		})
+
+	} else {
+		var err = new Error('All fields required.');
+		err.status = 400;
+		return next(err);
+	}
 });
 
 //GET: get list of users //REMOVE ON IMPLEMENT?
