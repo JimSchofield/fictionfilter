@@ -150,3 +150,10 @@ body {
 .searchBar_inactive {
   max-height: 0px;
   transition: max-height 1s; }
+
+.textInput {
+  display: block;
+  border: none;
+  padding: 16px;
+  font-size: 24px;
+  outline: none; }
