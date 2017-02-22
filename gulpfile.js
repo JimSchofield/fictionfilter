@@ -22,7 +22,7 @@ gulp.task('jscripts', function() {
 });
 
 gulp.task('watch-jscripts', function() {
-	gulp.watch('./js/**/*.js', ['jscripts']);
+	gulp.watch(['./js/**/*.js','api/**/*.js'], ['jscripts']);
 })
 
 gulp.task('default',['watch-sass', 'watch-jscripts'], function() {

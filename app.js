@@ -2,8 +2,29 @@ var express = require('express');
 var app = express();
 var routes = require('./routes/routes');
 var apiRoutes = require('./api/index');
+var jsonParser = require('body-parser').json;
 
 var port = 3000;
+
+app.use(jsonParser());
+
+
+// DB
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb://localhost:27017/qa');
+
+var db = mongoose.connection;
+
+db.on("error", function(err) {
+	console.error('connection error:', err);
+});
+
+db.once("open", function() {
+	console.log('Connection successful!');
+});
+
 
 //serve up public
 app.use(express.static('public'));
@@ -14,7 +35,7 @@ app.set('views', __dirname + '/views')
 
 //setup routes
 app.use('/', routes);
-app.use('/api', apiRoutes);
+app.use('/', apiRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
