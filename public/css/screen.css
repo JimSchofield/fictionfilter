@@ -140,7 +140,7 @@ body {
 
 .icon {
   width: 30px;
-  padding: 8px; }
+  padding: 0px; }
 
 .textInput-mainSearch {
   width: 100%; }
@@ -154,29 +154,9 @@ body {
   max-height: 0px;
   transition: max-height 1s; }
 
-.registerForm {
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
-
-form > * + * {
-  margin-top: 16px; }
-
-input {
-  display: block;
-  width: 100%; }
-
 .textInput {
   display: block;
-  width: 100%;
   border: none;
   padding: 16px;
   font-size: 24px;
   outline: none; }
-
-.form-group {
-  width: 100%; }
-
-.form-group > * + * {
-  margin-top: 16px; }
