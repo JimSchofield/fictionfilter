@@ -5,6 +5,8 @@ var router = express.Router();
 
 var User = require('./usermodel').User;
 
+var mockData = require('../mockdata.js');
+
 
 // Profile routes =============
 
@@ -20,6 +22,12 @@ router.post('/users', function(req, res, next) {
 		req.body.email &&
 		req.body.password) {
 
+		if(req.body.password !== req.body.passwordConfirm) {
+			var err = new Error("passwords don't match...");
+			err.status = 400;
+			return next(err)
+		} else {
+
 		var userData = {
 			username: req.body.username,
 			email: req.body.email,
@@ -33,7 +41,8 @@ router.post('/users', function(req, res, next) {
 				res.send("It's a success!")
 				console.log(userData);
 			}
-		})
+		});
+		}
 
 	} else {
 		var err = new Error('All fields required.');
@@ -68,6 +77,15 @@ router.put('/users/:username', function(req, res) {
 	//TODO 
 })
 
+
+//BOOK ROUTES ==================
+
+//SIMPLE GET RESPONSE TEST
+router.get('/books/:title', function(req, res, next) {
+	res.json(mockData);
+	console.log("We got a request for title ", req.params.title);
+	console.log("It's been returned!")
+});
 
 
 module.exports = router;

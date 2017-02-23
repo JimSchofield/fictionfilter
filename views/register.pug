@@ -6,13 +6,16 @@ block content
 		div.contentBody.contentBody_center
 			form(method='POST' action='/users').registerForm
 				div.form-group
-					label(for="username") Username
+					label(for="username") Username:
 					input(type=text, name="username", id="username" placeholder="What people will see").textInput
 				div.form-group
-					label(for="email") E-mail
+					label(for="email") E-mail:
 					input(type=text, name="email").textInput
 				div.form-group
-					label(for="password") Password
+					label(for="password") Password:
 					input(type='password', name='password').textInput
+				div.form-group
+					label(for="passwordConfirm") Confirm Password:
+					input(type='password', name='passwordConfirm').textInput
 				button(type=submit).button Register!
 
