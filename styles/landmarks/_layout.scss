@@ -34,14 +34,6 @@ body {
 	font-family: $PRIMARY_FONT;
 }
 
-.contentBody ul {
-	list-style-type: circle;
-    list-style-position: inside;
-
-}
-.contentBody ul > * + * {
-	padding-top: 8px;
-}
 
 .contentBody_center {
 	display: flex;

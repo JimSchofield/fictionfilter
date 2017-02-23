@@ -2,6 +2,25 @@ extends ./layout.pug
 
 block content
 	section.pageContent
-		h1.pageHeading Welcome to Fiction Filter
 		div.contentBody
-			p  This is where da most recent books would go and possibly categories
+			div.bookCard
+				h1 Title
+				h2 Author, Date
+				div.bookCard-row
+					div.bookCard-left
+						img(src="http://placehold.it/150x200")
+					div.bookCard-right
+						p 5000 pages
+						p genre
+						p User reviews: 2
+						p Average ratings:
+						
+						ul.ratingsList
+							li.ratingsList-cat substances: 0
+							li.ratingsList-cat sex: 0
+							li.ratingsList-cat violence: 1
+							li.ratingsList-cat language: 1
+							li.ratingsList-cat abuse: 3.1
+							li.ratingsList-cat hate: 5
+							li.ratingsList-cat immorality: 2
+							li.ratingsList-cat occult: 4

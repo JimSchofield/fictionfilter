@@ -99,13 +99,6 @@ body {
   border-radius: 8px;
   font-family: "Raleway", sans-serif; }
 
-.contentBody ul {
-  list-style-type: circle;
-  list-style-position: inside; }
-
-.contentBody ul > * + * {
-  padding-top: 8px; }
-
 .contentBody_center {
   display: flex;
   flex-direction: column;
@@ -163,3 +156,56 @@ form > * + * {
   padding: 16px;
   font-size: 24px;
   outline: none; }
+
+.bookCard {
+  margin: 32px; }
+
+.bookCard > * + * {
+  margin-top: 16px; }
+
+.bookCard-row {
+  display: flex; }
+
+.bookCard-row > div {
+  padding: 16px; }
+
+.bookCard-right {
+  flex-grow: 1; }
+
+.bookCard-right > * + * {
+  margin-top: 16px; }
+
+.ratingsList {
+  list-style: none;
+  padding-left: 0;
+  column-count: 2;
+  background: white;
+  padding: 8px;
+  text-align: center;
+  border-radius: 8px; }
+
+.bookCard h1 {
+  font-size: 40px;
+  text-align: center; }
+
+.bookCard h2 {
+  font-size: 24px;
+  text-align: center; }
+
+.color0 {
+  color: #00fa00; }
+
+.color1 {
+  color: #32c800; }
+
+.color2 {
+  color: #649600; }
+
+.color3 {
+  color: #966400; }
+
+.color4 {
+  color: #c83200; }
+
+.color5 {
+  color: #fa0000; }
