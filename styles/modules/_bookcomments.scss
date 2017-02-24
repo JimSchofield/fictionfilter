@@ -1,0 +1,15 @@
+.bookComment {
+	width: 80%;
+	margin: auto;
+}
+
+.bookComment > * + * {
+	margin-top: 12px;
+}
+
+.bookComment > h2 {
+	font-size: 28px;
+}
+
+.bookComment-userNotes {
+}

@@ -4,6 +4,9 @@
 var express = require('express')
 var router = express.Router();
 
+//TEMP
+var mockBookData = require('../mockdata.js');
+
 router.get('/', function(req, res) {
 	res.render('index', {title: "Page Title"});
 });
@@ -13,7 +16,7 @@ router.get('/about', function(req, res) {
 });
 
 router.get('/books', function(req, res) {
-	res.render('books', {title: "Books"});
+	res.render('books', {title: "Books", bookData: mockBookData});
 });
 
 router.get('/profile', function(req, res) {

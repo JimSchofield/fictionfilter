@@ -1,18 +1,20 @@
 var bookObject = {
 	"id": "asdofuon23ojn24o",
 	"title": "To Kill a Mocking Bird",
+	"coverURL": "http://placehold.it/150x200",
 	"author": "Harper Lee",
 	"publishedYear": 1960,
 	"pages": 281,
+	"genres": "Novel, coming of age, southern fiction",
 	"averageRatings": {
 		"substances": 0,
-		"sex": 0,
-		"violence": 0,
-		"language": 1,
-		"abuse": 0,
+		"sex": 1,
+		"violence": 2,
+		"language": 3,
+		"abuse": .9,
 		"hate": 5,
-		"immorality": 0,
-		"occult": 0
+		"immorality": 3.4,
+		"occult": 0.9
 	},
 	"numberUserReviews": 2,
 	"userReviews": [
@@ -54,23 +56,23 @@ var bookObject = {
 					"comment": ""
 				}
 			},
-			"generalComments": ""
+			"generalComments": "This book rocked my face off"
 		},
 		{
 			"id": "asdf089sadf08dsfs",
-			"username": "Sally",
+			"username": "Jane",
 			"dateCreated": "Jan 15, 2017",
 			"ratings": {
 				"substances": { 
-					"rating": 0, 
+					"rating": 2, 
 					"comment": ""
 				},
 				"sex": { 
-					"rating": 0, 
+					"rating": 3, 
 					"comment": ""
 				},
 				"violence": { 
-					"rating": 0, 
+					"rating": 1, 
 					"comment": ""
 				},
 				"language": { 
@@ -82,7 +84,7 @@ var bookObject = {
 					"comment": ""
 				},
 				"hate": { 
-					"rating": 5, 
+					"rating": 4, 
 					"comment": "Needs to be discussed"
 				},
 				"immorality": { 
@@ -90,11 +92,11 @@ var bookObject = {
 					"comment": ""
 				},
 				"occult": { 
-					"rating": 0,
+					"rating": 3,
 					"comment": ""
 				}
 			},
-			"generalComments": ""
+			"generalComments": "This was meh..."
 		}
 	]
 }

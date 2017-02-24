@@ -189,23 +189,36 @@ form > * + * {
   text-align: center; }
 
 .bookCard h2 {
-  font-size: 24px;
+  font-size: 28px;
   text-align: center; }
 
 .color0 {
-  color: #00fa00; }
+  color: #0B6670; }
 
 .color1 {
-  color: #32c800; }
+  color: #12A9BA; }
 
 .color2 {
-  color: #649600; }
+  color: #ABD19E; }
 
 .color3 {
-  color: #966400; }
+  color: #E8D337; }
 
 .color4 {
-  color: #c83200; }
+  color: #FFB73A; }
 
 .color5 {
-  color: #fa0000; }
+  color: #E85100; }
+
+hr {
+  width: 80%; }
+
+.bookComment {
+  width: 80%;
+  margin: auto; }
+
+.bookComment > * + * {
+  margin-top: 12px; }
+
+.bookComment > h2 {
+  font-size: 28px; }

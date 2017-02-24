@@ -4,23 +4,40 @@ block content
 	section.pageContent
 		div.contentBody
 			div.bookCard
-				h1 Title
-				h2 Author, Date
+				h1 #{ bookData.title}
+				h2 #{ bookData.author}, #{bookData.publishedYear}
 				div.bookCard-row
 					div.bookCard-left
-						img(src="http://placehold.it/150x200")
+						img(src="" + bookData.coverURL)
 					div.bookCard-right
-						p 5000 pages
-						p genre
-						p User reviews: 2
+						p #{ bookData.pages } pages
+						p #{ bookData.genres }
+						p User reviews: #{ bookData.numberUserReviews }
 						p Average ratings:
 						
 						ul.ratingsList
-							li.ratingsList-cat substances: 0
-							li.ratingsList-cat sex: 0
-							li.ratingsList-cat violence: 1
-							li.ratingsList-cat language: 1
-							li.ratingsList-cat abuse: 3.1
-							li.ratingsList-cat hate: 5
-							li.ratingsList-cat immorality: 2
-							li.ratingsList-cat occult: 4
+							li.ratingsList-cat substances: #{ bookData.averageRatings.substances }
+							li.ratingsList-cat sex: #{ bookData.averageRatings.sex }
+							li.ratingsList-cat violence: #{ bookData.averageRatings.violence }
+							li.ratingsList-cat language: #{ bookData.averageRatings.language }
+							li.ratingsList-cat abuse: #{ bookData.averageRatings.abuse }
+							li.ratingsList-cat hate: #{ bookData.averageRatings.hate }
+							li.ratingsList-cat immorality: #{ bookData.averageRatings.immorality }
+							li.ratingsList-cat occult: #{ bookData.averageRatings.occult }
+			
+			each value in bookData.userReviews
+				hr
+				div.bookComment
+					h2 #{ value.username }
+					ul.ratingsList
+						li.ratingsList-cat substances: #{ value.ratings.substances.rating }
+						li.ratingsList-cat sex: #{ value.ratings.sex.rating }
+						li.ratingsList-cat violence: #{ value.ratings.violence.rating }
+						li.ratingsList-cat language: #{ value.ratings.language.rating }
+						li.ratingsList-cat abuse: #{ value.ratings.abuse.rating }
+						li.ratingsList-cat hate: #{ value.ratings.hate.rating }
+						li.ratingsList-cat immorality: #{ value.ratings.immorality.rating }
+						li.ratingsList-cat occult: #{ value.ratings.occult.rating }
+					p.bookComment-userNotes #{ value.generalComments }
+
+
