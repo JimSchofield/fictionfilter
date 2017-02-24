@@ -5,7 +5,7 @@ var router = express.Router();
 
 var User = require('./usermodel').User;
 
-var mockData = require('../mockdata.js');
+var mockData = require('../mockdata.js'); //TEMP
 
 
 // Profile routes =============
@@ -36,6 +36,9 @@ router.post('/users', function(req, res, next) {
 
 		User.create(userData, function(err, user) {
 			if(err) { 
+				if (err.message.includes("E11000")) {
+					err.message = "User already exists!";
+				}
 				return next(err);
 			} else {
 				res.send("It's a success!")
@@ -68,9 +71,11 @@ router.get('/users/:username', function(req, res, next) {
 	User.find({username: username})
 			.exec(function(err, user) {
 				if(err) return next(err);
-				res.json(user);
+
+				res.render('profile', { userData: user[0] });
 			});
 });
+
 
 //PUT: /users/:name update profile
 router.put('/users/:username', function(req, res) {
@@ -82,9 +87,7 @@ router.put('/users/:username', function(req, res) {
 
 //SIMPLE GET RESPONSE TEST
 router.get('/books/:title', function(req, res, next) {
-	res.json(mockData);
-	console.log("We got a request for title ", req.params.title);
-	console.log("It's been returned!")
+	// res.json(bookData);
 });
 
 

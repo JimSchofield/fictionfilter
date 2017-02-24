@@ -9,6 +9,8 @@ var apiRoutes = require('./api/index');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+var path = require('path');
+
 var port = 3000;
 
 app.use(bodyParser.json());
@@ -33,11 +35,11 @@ db.once("open", function() {
 
 
 //serve up public
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //set up pug
 app.set('view engine', 'pug');
-app.set('views', __dirname + '/views')
+
 
 //setup routes
 app.use('/', routes);

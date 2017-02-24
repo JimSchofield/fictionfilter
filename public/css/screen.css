@@ -213,6 +213,9 @@ form > * + * {
 hr {
   width: 80%; }
 
+.bookCard img {
+  max-width: 150px; }
+
 .bookComment {
   width: 80%;
   margin: auto; }

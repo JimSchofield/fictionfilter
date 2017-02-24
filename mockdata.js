@@ -1,7 +1,7 @@
 var bookObject = {
 	"id": "asdofuon23ojn24o",
 	"title": "To Kill a Mocking Bird",
-	"coverURL": "http://placehold.it/150x200",
+	"coverURL": "http://www.hollywoodreporter.com/sites/default/files/imagecache/NFE_portrait/2013/09/to_kill_a_mocking_bird.jpg",
 	"author": "Harper Lee",
 	"publishedYear": 1960,
 	"pages": 281,
