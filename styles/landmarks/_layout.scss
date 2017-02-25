@@ -18,14 +18,9 @@ body {
 
 }
 .pageContent > * + * {
-	margin-top: 56px;
+	margin-top: 30px;
 }
 
-.pageHeading {
-	color: white;
-	font-size: $HEADER_FONT_SIZE;
-	font-family: $PRIMARY_FONT;
-}
 
 .contentBody {
 	background: $BG;

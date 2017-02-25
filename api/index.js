@@ -11,12 +11,7 @@ var mockData = require('../mockdata.js'); //TEMP
 // Profile routes =============
 
 //POST: /users/:name create a new user
-//TODO: incorporate user authent and author
 router.post('/users', function(req, res, next) {
-
-	console.log(req.body.username);
-	console.log(req.body.email);
-	console.log(req.body.password);
 
 	if (req.body.username &&
 		req.body.email &&
@@ -41,8 +36,7 @@ router.post('/users', function(req, res, next) {
 				}
 				return next(err);
 			} else {
-				res.send("It's a success!")
-				console.log(userData);
+				res.redirect('/users/' + user.username);
 			}
 		});
 		}
@@ -68,11 +62,15 @@ router.get('/users', function(req, res, next) {
 //GET: /users/:username get a specific user
 router.get('/users/:username', function(req, res, next) {
 	var username = req.params.username;
-	User.find({username: username})
+	User.findOne({username: username})
 			.exec(function(err, user) {
 				if(err) return next(err);
-
-				res.render('profile', { userData: user[0] });
+				if(user === null) {
+					var err = new Error('User not found!');
+					next(err);
+				} else {
+					res.render('profile', { userData: user });
+				}
 			});
 });
 

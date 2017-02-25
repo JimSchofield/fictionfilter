@@ -4,10 +4,16 @@ block content
 	section.pageContent
 		h1.pageHeading #{ userData.username }'s Profile
 		div.contentBody
-			p  This will show:
-				ul
-					li Personal preferences such as genre
-					li Most recent posts
-					li posts written by the user
-					li favorite books and recommendations
-					li quotes
+			h2 Number of reviews: #{ userData.reviewsMade }
+			h2 Member since:
+			p.primaryText_center #{ userData.registeredAt }
+			h2 Currently Reading:
+			p.primaryText_center #{ userData.readingNow }
+			h2 Favorite Genres:
+			p.primaryText_center #{ userData.genre }
+			h2 Favorite Books:
+			p.primaryText_center #{ userData.book }
+			h2 Recent reviews:
+			ul
+				each post in userData.recentReviews
+					li.primaryText_center

@@ -1,2 +1,15 @@
+h1 {
+  font-size: $HEADER_FONT_SIZE;
+}
+h2 {
+  font-size: $SUBHEADER_FONT_SIZE;
+}
 
+.pageHeading {
+	color: white;
+	font-family: $PRIMARY_FONT;
+}
 
+.primaryText_center {
+	text-align: center;
+}

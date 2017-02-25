@@ -2,10 +2,11 @@ extends ./layout.pug
 
 block content
 	section.pageContent
+
+		h1.pageHeading #{ bookData.title}
+		h2.pageHeading #{ bookData.author}, #{bookData.publishedYear}
 		div.contentBody
 			div.bookCard
-				h1 #{ bookData.title}
-				h2 #{ bookData.author}, #{bookData.publishedYear}
 				div.bookCard-row
 					div.bookCard-left
 						img(src="" + bookData.coverURL)

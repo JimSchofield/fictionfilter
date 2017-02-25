@@ -30,10 +30,22 @@ var UserSchema = new Schema({
 		default: 0,
 		required: true
 	},
-	recentReviews: [],
-	favoriteBooks: [],
-	readingNow: [],
-	favoriteGenres: []
+	recentReviews: {
+		type: [],
+		default: [],
+	},
+	favoriteBooks: {
+		type: String,
+		default: "",
+	},
+	readingNow: {
+		type: String,
+		default: "",
+	},
+	favoriteGenres: {
+		type: String,
+		default: "",
+	}
 })
 
 var User = mongoose.model('User', UserSchema);
