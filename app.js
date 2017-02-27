@@ -7,6 +7,8 @@ var routes = require('./routes/routes');
 var apiRoutes = require('./api/index');
 
 var bodyParser = require('body-parser');
+
+var session = require('express-session');
 var mongoose = require('mongoose');
 
 var path = require('path');
@@ -15,6 +17,13 @@ var port = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// use sessions for tracking logins
+app.use(session({
+	secret: 'hody partner',
+	resave: true,
+	saveUninitialized: false
+}));
 
 
 // DB

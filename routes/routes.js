@@ -27,8 +27,9 @@ router.get('/register', function(req, res) {
 	res.render('register', {title: "Register"});
 });
 
-router.get('/login', function(req, res){
-	res.render('login', {title: "Login"});
+//signin route from login overlay
+router.post('/login', function(req, res){
+	return res.send('Logged In!');
 });
 
 module.exports = router;

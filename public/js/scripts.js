@@ -10229,6 +10229,17 @@ $(".ratingsList-cat").each(function(index) {
   $this.addClass("color" + Math.round(ratingNumber));
   
 });
+$('#js-login').on('click', function() {
+	$('.loginOverlay').removeClass('loginOverlay_hidden');
+});
+
+$('.loginOverlay').click(function() {
+	$('.loginOverlay').addClass('loginOverlay_hidden');
+})
+
+$(".loginOverlay-container").click(function(e) {
+   e.stopPropagation();
+});
 var $mainSearch = $("#js-mainSearch"),
 	$searchIcon = $("#js-searchIcon");
 
