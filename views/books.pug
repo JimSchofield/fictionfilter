@@ -3,13 +3,14 @@ extends ./layout.pug
 block content
 	section.pageContent
 
-		h1.pageHeading #{ bookData.title}
-		h2.pageHeading #{ bookData.author}, #{bookData.publishedYear}
+		h1.pageHeading #{ bookData.title }
+		h2.pageHeading #{ bookData.author }, #{bookData.publishedYear}
 		div.contentBody
 			div.bookCard
 				div.bookCard-row
 					div.bookCard-left
-						img(src="" + bookData.coverURL)
+						if bookData.coverURL
+							img(src="" + bookData.coverURL)
 					div.bookCard-right
 						p #{ bookData.pages } pages
 						p #{ bookData.genres }

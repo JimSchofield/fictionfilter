@@ -1,104 +1,52 @@
-var bookObject = {
-	"id": "asdofuon23ojn24o",
-	"title": "To Kill a Mocking Bird",
-	"coverURL": "http://www.hollywoodreporter.com/sites/default/files/imagecache/NFE_portrait/2013/09/to_kill_a_mocking_bird.jpg",
-	"author": "Harper Lee",
-	"publishedYear": 1960,
-	"pages": 281,
-	"genres": "Novel, coming of age, southern fiction",
+var book = {
+	"title": "Test Book!",
+	"author": "John Smith",
+	"publishedYear": 2015,
+	"pages":  432,
+	"genres": "Comedy",
 	"averageRatings": {
 		"substances": 0,
-		"sex": 1,
-		"violence": 2,
-		"language": 3,
-		"abuse": .9,
-		"hate": 5,
-		"immorality": 3.4,
-		"occult": 0.9
+		"sex": 0,
+		"violence": 0,
+		"language": 1,
+		"abuse": 2,
+		"hate": 3,
+		"immorality": 4,
+		"occult": 5
 	},
-	"numberUserReviews": 2,
+	"numberUserReviews": 0,
 	"userReviews": [
 		{
-			"id": "asdf089sadf08dsfs",
-			"username": "Sally",
-			"dateCreated": "Jan 15, 2017",
+			"username": "oldcoyote",
 			"ratings": {
 				"substances": { 
-					"rating": 0, 
-					"comment": ""
+					"rating": 1
 				},
 				"sex": { 
-					"rating": 0, 
-					"comment": ""
+					"rating": 1
 				},
 				"violence": { 
-					"rating": 0, 
-					"comment": ""
+					"rating": 2,
+					"comment": "Rando comment asdfasdfasfasdf"
 				},
 				"language": { 
-					"rating": 1, 
-					"comment": ""
+					"rating": 4
 				},
 				"abuse": { 
-					"rating": 2, 
-					"comment": ""
+					"rating": 4
 				},
 				"hate": { 
-					"rating": 5, 
-					"comment": "Needs to be discussed asdfasdfdsflorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. At inventore totam in voluptates aperiam illo eveniet voluptate dolores quae rem maiores ducimus sit et, est error facere voluptatum magnam! Laborum."
+					"rating": 5
 				},
 				"immorality": { 
-					"rating": 0, 
-					"comment": ""
+					"rating": 2
 				},
 				"occult": { 
-					"rating": 0,
-					"comment": ""
+					"rating": 3
 				}
 			},
-			"generalComments": "This book rocked my face off"
-		},
-		{
-			"id": "asdf089sadf08dsfs",
-			"username": "Jane",
-			"dateCreated": "Jan 15, 2017",
-			"ratings": {
-				"substances": { 
-					"rating": 2, 
-					"comment": ""
-				},
-				"sex": { 
-					"rating": 3, 
-					"comment": "stuff stuff stuff"
-				},
-				"violence": { 
-					"rating": 1, 
-					"comment": ""
-				},
-				"language": { 
-					"rating": 1, 
-					"comment": ""
-				},
-				"abuse": { 
-					"rating": 2, 
-					"comment": ""
-				},
-				"hate": { 
-					"rating": 4, 
-					"comment": ""
-				},
-				"immorality": { 
-					"rating": 0, 
-					"comment": ""
-				},
-				"occult": { 
-					"rating": 3,
-					"comment": ""
-				}
-			},
-			"generalComments": "This was meh..."
+			"generalComments": "Really fun Book!"
 		}
 	]
 }
 
-module.exports = bookObject;

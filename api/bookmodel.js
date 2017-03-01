@@ -10,8 +10,11 @@ var UserCommentSchema = new Schema({
 		required: true
 	},
 	dateCreated: {
-		type: date,
+		type: Date,
 		default: Date.now
+	},
+	dateUpdated: {
+		type: Date
 	},
 	ratings: {
 		substances: { 

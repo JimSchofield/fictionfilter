@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 
 var User = require('./usermodel');
+var Book = require('./bookmodel');
 
 var mockData = require('../mockdata.js'); //TEMP
 
@@ -85,8 +86,46 @@ router.put('/users/:username', function(req, res) {
 
 //SIMPLE GET RESPONSE TEST
 router.get('/books/:title', function(req, res, next) {
-	// res.json(bookData);
+	var bookTitle = req.params.title;
+	Book.findOne({title: bookTitle})
+			.lean()
+			.exec(function(err, book) {
+				if(err) return next(err);
+				if(book === null) {
+					var err = new Error('Book not found!');
+					next(err);
+				} else {
+					res.render('books', { bookData: book });
+				}
+			});
 });
+
+router.get('/booksjson/:title', function(req, res, next) {
+	var bookTitle = req.params.title;
+	Book.findOne({title: bookTitle})
+			.exec(function(err, book) {
+				if(err) return next(err);
+				if(book === null) {
+					var err = new Error('Book not found!');
+					next(err);
+				} else {
+					res.send(book);
+				}
+			});
+});
+
+//POST book to database
+router.post('/books', function(req, res, next) {
+	Book.create(req.body , function(err, user) {
+		if(err) { 
+			if (err) return next(err);
+		} else {
+			res.send("SUCCESS! YO!");
+		}
+	});
+});
+
+
 
 
 module.exports = router;
