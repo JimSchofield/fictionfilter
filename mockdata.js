@@ -45,7 +45,7 @@ var bookObject = {
 				},
 				"hate": { 
 					"rating": 5, 
-					"comment": "Needs to be discussed"
+					"comment": "Needs to be discussed asdfasdfdsflorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. At inventore totam in voluptates aperiam illo eveniet voluptate dolores quae rem maiores ducimus sit et, est error facere voluptatum magnam! Laborum."
 				},
 				"immorality": { 
 					"rating": 0, 
@@ -69,7 +69,7 @@ var bookObject = {
 				},
 				"sex": { 
 					"rating": 3, 
-					"comment": ""
+					"comment": "stuff stuff stuff"
 				},
 				"violence": { 
 					"rating": 1, 
@@ -85,7 +85,7 @@ var bookObject = {
 				},
 				"hate": { 
 					"rating": 4, 
-					"comment": "Needs to be discussed"
+					"comment": ""
 				},
 				"immorality": { 
 					"rating": 0, 

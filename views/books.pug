@@ -15,30 +15,24 @@ block content
 						p #{ bookData.genres }
 						p User reviews: #{ bookData.numberUserReviews }
 						p Average ratings:
-						
+						br
 						ul.ratingsList
-							li.ratingsList-cat substances: #{ bookData.averageRatings.substances }
-							li.ratingsList-cat sex: #{ bookData.averageRatings.sex }
-							li.ratingsList-cat violence: #{ bookData.averageRatings.violence }
-							li.ratingsList-cat language: #{ bookData.averageRatings.language }
-							li.ratingsList-cat abuse: #{ bookData.averageRatings.abuse }
-							li.ratingsList-cat hate: #{ bookData.averageRatings.hate }
-							li.ratingsList-cat immorality: #{ bookData.averageRatings.immorality }
-							li.ratingsList-cat occult: #{ bookData.averageRatings.occult }
+							each category, key in bookData.averageRatings
+								li.ratingsList-cat #{key} : #{ category }
+
 			
 			each value in bookData.userReviews
 				hr
 				div.bookComment
 					h2 #{ value.username }
 					ul.ratingsList
-						li.ratingsList-cat substances: #{ value.ratings.substances.rating }
-						li.ratingsList-cat sex: #{ value.ratings.sex.rating }
-						li.ratingsList-cat violence: #{ value.ratings.violence.rating }
-						li.ratingsList-cat language: #{ value.ratings.language.rating }
-						li.ratingsList-cat abuse: #{ value.ratings.abuse.rating }
-						li.ratingsList-cat hate: #{ value.ratings.hate.rating }
-						li.ratingsList-cat immorality: #{ value.ratings.immorality.rating }
-						li.ratingsList-cat occult: #{ value.ratings.occult.rating }
+						each category, key in value.ratings
+							li.ratingsList-cat #{ key } : #{ category.rating }
+								if category.comment
+									img(src="/textbubble.png" class="js-textBubble")
+									div.textBubble.textBubble_inactive
+										div.textBubble-text #{ category.comment}
+
 					p.bookComment-userNotes #{ value.generalComments }
 
 

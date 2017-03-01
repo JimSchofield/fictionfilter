@@ -58,7 +58,7 @@ html {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 4px 16px 4px 16px; }
+  padding: 0px 16px 0px 16px; }
 
 .nav-main {
   display: flex;
@@ -173,7 +173,8 @@ form > * + * {
 .ratingsList {
   list-style: none;
   padding-left: 0;
-  column-count: 2;
+  max-width: 350px;
+  margin: auto;
   background: white;
   padding: 8px;
   text-align: center;
@@ -212,6 +213,28 @@ hr {
 
 .bookComment > h2 {
   font-size: 28px; }
+
+.js-textBubble {
+  width: 16px;
+  margin-left: 8px;
+  cursor: help; }
+
+.textBubble {
+  position: relative;
+  color: white; }
+
+.textBubble-text {
+  position: absolute;
+  background: #ffa100;
+  padding: 12px;
+  border-radius: 8px;
+  height: initial; }
+
+.textBubble_inactive {
+  height: 0px;
+  width: 0px;
+  overflow: hidden;
+  transition: .5s; }
 
 h1 {
   font-size: 40px; }

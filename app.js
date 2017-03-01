@@ -2,12 +2,9 @@
 
 var express = require('express');
 var app = express();
-
 var routes = require('./routes/routes');
 var apiRoutes = require('./api/index');
-
 var bodyParser = require('body-parser');
-
 var session = require('express-session');
 var mongoose = require('mongoose');
 
@@ -24,6 +21,12 @@ app.use(session({
 	resave: true,
 	saveUninitialized: false
 }));
+
+// make user ID available to templates
+app.use(function(req, res, next){
+	res.locals.currentUser = req.session.userId;
+	next();
+})
 
 
 // DB

@@ -47,7 +47,29 @@ var UserSchema = new Schema({
 		type: String,
 		default: "",
 	}
-})
+});
+
+//authenticate user against database
+UserSchema.statics.auth = function(username, password, callback) {
+	User.findOne({ username: username})
+		.exec(function(error, user) {
+			if (error) {
+				return callback(error);
+			} else if ( !user ) {
+				var err = new Error('User not found...');
+				err.status = 401;
+				return callback(err);
+			}
+			bcrypt.compare(password, user.password, function(error, result) {
+				if (result === true) {
+					return callback(null, user);
+				} else {
+					return callback();
+				}
+
+			});
+		});
+}
 
 //hash password before saving
 UserSchema.pre('save', function(next) {
@@ -60,7 +82,7 @@ UserSchema.pre('save', function(next) {
 });
 
 var User = mongoose.model('User', UserSchema);
-module.exports.User = User
+module.exports = User;
 
 
 

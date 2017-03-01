@@ -24,7 +24,9 @@
 .ratingsList {
   list-style: none;
   padding-left: 0;
-  column-count: 2;
+  max-width: 350px;
+  margin: auto;
+  // column-count: 2;
   background: white;
   padding: 8px;
   text-align: center;

@@ -3,7 +3,7 @@
 var express = require('express');
 var router = express.Router();
 
-var User = require('./usermodel').User;
+var User = require('./usermodel');
 
 var mockData = require('../mockdata.js'); //TEMP
 
@@ -36,6 +36,7 @@ router.post('/users', function(req, res, next) {
 				}
 				return next(err);
 			} else {
+				req.session.userId = user._id;
 				res.redirect('/users/' + user.username);
 			}
 		});

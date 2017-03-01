@@ -10219,6 +10219,13 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
+$('.js-textBubble').on("click", function() {
+	$(this).next().removeClass('textBubble_inactive');
+});
+
+$('.textBubble').click(function() {
+	$(this).addClass('textBubble_inactive');
+});
 
 $(".ratingsList-cat").each(function(index) {
   var $this = $(this);

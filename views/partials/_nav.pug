@@ -8,14 +8,20 @@ div.nav
 				a(href="/about").nav-main-item About
 			li
 				a(href="/books").nav-main-item Books
-			li
-				a(href="/profile").nav-main-item Profile
-			li
-				a(href="/register").nav-main-item Register
+			if currentUser
+				li
+					a(href="/profile").nav-main-item Profile
+			if !currentUser
+				li
+					a(href="/register").nav-main-item Signup
 			li
 				a(href="#0")
 					img(src="/search.png" id="js-searchIcon").icon
 		div.nav-login
-			button(id="js-login").button.button-primary Login
+			if currentUser
+				form(action="/logout")
+					button(id="js-logout").button.button-primary Log Out
+			else
+				button(id="js-login").button.button-primary Login
 
 	include _loginOverlay.pug

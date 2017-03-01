@@ -11,5 +11,29 @@
 	font-size: 28px;
 }
 
-.bookComment-userNotes {
+.js-textBubble {
+	width: 16px;
+	margin-left: 8px;
+	cursor: help;
+}
+
+.textBubble {
+	position: relative;
+	color: white;
+}
+
+.textBubble-text {
+	position: absolute;
+	background: $ORANGE;
+	padding: 12px;
+	border-radius: 8px;
+	height: initial;
+
+}
+
+.textBubble_inactive {
+	height: 0px;
+	width: 0px;
+	overflow: hidden;
+	transition: .5s;
 }
