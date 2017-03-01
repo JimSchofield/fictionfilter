@@ -6,6 +6,7 @@ var routes = require('./routes/routes');
 var apiRoutes = require('./api/index');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
 
 var path = require('path');
@@ -14,19 +15,6 @@ var port = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// use sessions for tracking logins
-app.use(session({
-	secret: 'hody partner',
-	resave: true,
-	saveUninitialized: false
-}));
-
-// make user ID available to templates
-app.use(function(req, res, next){
-	res.locals.currentUser = req.session.userId;
-	next();
-})
 
 
 // DB
@@ -44,6 +32,22 @@ db.on("error", function(err) {
 db.once("open", function() {
 	console.log('Connection successful!');
 });
+
+// use sessions for tracking logins
+app.use(session({
+	secret: 'hody partner',
+	resave: true,
+	saveUninitialized: false,
+	store: new MongoStore({
+		mongooseConnection: db
+	})
+}));
+
+// make user ID available to templates
+app.use(function(req, res, next){
+	res.locals.currentUser = req.session.userId;
+	next();
+})
 
 
 //serve up public

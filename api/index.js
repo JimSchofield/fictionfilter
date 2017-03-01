@@ -52,7 +52,6 @@ router.post('/users', function(req, res, next) {
 //GET: get list of users //REMOVE ON IMPLEMENT?
 router.get('/users', function(req, res, next) {
 
-	console.log("get call for users");
 	User.find({})
 			.exec(function(err, users) {
 				if(err) return next(err);

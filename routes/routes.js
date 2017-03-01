@@ -21,12 +21,7 @@ router.get('/books', function(req, res) {
 	res.render('books', {title: "Books", bookData: mockBookData});
 });
 
-router.get('/profile', function(req, res, next) {
-	if (!req.session.userId) {
-		var err = new Error("You need to log in");
-		err.status = 401;
-		return next(err);
-	} else {
+router.get('/profile', mid.requiresLogin, function(req, res, next) {
 	User.findById(req.session.userId)
 		.exec(function(error, user) {
 			if(error) {
@@ -35,7 +30,6 @@ router.get('/profile', function(req, res, next) {
 				return res.render('profile', { userData: user });
 			}
 		});
-	}
 });
 
 router.get('/register', mid.loggedIn, function(req, res) {
@@ -52,7 +46,6 @@ router.post('/login', mid.loggedIn, function(req, res, next){
 				return next(err);
 			} else {
 				req.session.userId = user._id;
-				req.session.username = user.username;
 				return res.redirect('/users/' + user.username);
 			}
 		});
