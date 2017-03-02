@@ -27,7 +27,8 @@ router.get('/profile', mid.requiresLogin, function(req, res, next) {
 			if(error) {
 				return next(error);
 			} else {
-				return res.render('profile', { userData: user, title: user.username + "'s Profile" });
+
+				return res.render('profile', { userData: user, title: user.username + "'s Profile", loggedIn: true });
 			}
 		});
 });
@@ -46,7 +47,8 @@ router.post('/login', mid.loggedIn, function(req, res, next){
 				return next(err);
 			} else {
 				req.session.userId = user._id;
-				return res.redirect('/users/' + user.username);
+				req.session.username = user.username;
+				return res.redirect('/profile');
 			}
 		});
 	} else {

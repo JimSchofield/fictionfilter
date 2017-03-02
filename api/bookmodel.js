@@ -71,8 +71,12 @@ var BookSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
+	lastUpdatedBy: {
+		type: String
+	},
 	dateUpdated: {
-		type: Date
+		type: Date,
+		default: Date.now
 	},
 	coverURL: {
 		type: String

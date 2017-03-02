@@ -4,16 +4,19 @@ block content
 	section.pageContent
 		h1.pageHeading #{ userData.username }'s Profile
 		div.contentBody
-			h2 Number of reviews: #{ userData.reviewsMade }
-			h2 Member since:
-			p.primaryText_center #{ userData.registeredAt }
-			h2 Currently Reading:
-			p.primaryText_center #{ userData.readingNow }
-			h2 Favorite Genres:
-			p.primaryText_center #{ userData.genre }
-			h2 Favorite Books:
-			p.primaryText_center #{ userData.book }
-			h2 Recent reviews:
+			p Number of reviews: 
+				span(id="js-reviewsMade") #{ userData.reviewsMade }
+			p Member since: 
+				span(id="js-registeredAt") #{ userData.registeredAt }
+			p Currently Reading:  
+				span(id="js-readingNow") #{ userData.readingNow }
+			p Favorite Genres:  
+				span(id="js-favoriteGenres") #{ userData.favoriteGenres }
+			p Favorite Books:  
+				span(id="js-favoriteBooks") #{ userData.favoriteBooks }
+			p Recent reviews:
 			ul
 				each post in userData.recentReviews
 					li.primaryText_center
+			if loggedIn
+				button.button Edit Profile Information

@@ -37,15 +37,15 @@ router.get('/searchlatest', function(req, res, next) {
 			if (error) return next(error);
 			res.render('searchresults.pug',
 				{
-					query: req.body.query,
-					title: "Search results for: " + req.body.query,
+					query: "10 most recent",
+					title: "10 most recent",
 					results: results
 				}
 			);
 		});
 });
 
-//Search by Author
+//Search by Author ??
 
 
 
@@ -78,7 +78,7 @@ router.post('/users', function(req, res, next) {
 				return next(err);
 			} else {
 				req.session.userId = user._id;
-				res.redirect('/users/' + user.username);
+				res.redirect('/profile');
 			}
 		});
 		}
@@ -158,6 +158,10 @@ router.get('/booksjson/:title', function(req, res, next) {
 
 //POST book to database
 router.post('/books', function(req, res, next) {
+	console.log(req.body);
+	req.body.lastUpdatedBy = req.session.username;
+	console.log(req.session.username);
+	console.log(req.body);
 	Book.create(req.body , function(err, user) {
 		if(err) { 
 			if (err) return next(err);

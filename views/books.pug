@@ -21,7 +21,7 @@ block content
 						ul.ratingsList
 							each category, key in bookData.averageRatings
 								li.ratingsList-cat #{key} : #{ category }
-						p Book information last modified: #{ bookData.dateCreated} by #{ bookData.lastUpdatedBy }
+						p.smallText Book information last modified: #{ bookData.dateCreated} by #{ bookData.lastUpdatedBy }
 						if currentUser
 							form(action="/").form_center
 								button.button Add a Content Review

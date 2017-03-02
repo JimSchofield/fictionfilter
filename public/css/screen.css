@@ -257,6 +257,9 @@ h2 {
 .primaryText_center {
   text-align: center; }
 
+.smallText {
+  font-size: 16px; }
+
 .loginOverlay {
   background: rgba(0, 0, 0, 0.4);
   position: absolute;
