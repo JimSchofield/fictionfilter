@@ -1,0 +1,9 @@
+extends ./layout.pug
+
+block content
+	section.pageContent
+		h1.pageHeading Search Results for: '#{ query }'
+		each result in results
+			div.contentBody.contentBody_center
+				p 
+					a(href="/books/" + escape(result.title)) #{ result.title } by #{result.author} - #{ result.publishedYear } 

@@ -13,8 +13,12 @@ var UserCommentSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
+	lastUpdatedBy: {
+		type: String
+	},
 	dateUpdated: {
-		type: Date
+		type: Date,
+		default: Date.now
 	},
 	ratings: {
 		substances: { 
@@ -63,6 +67,13 @@ var BookSchema = new Schema({
 		require: true,
 		trim: true
 	},
+	dateCreated: {
+		type: Date,
+		default: Date.now
+	},
+	dateUpdated: {
+		type: Date
+	},
 	coverURL: {
 		type: String
 	},
@@ -74,7 +85,7 @@ var BookSchema = new Schema({
 		type: Number
 	},
 	pages: {
-		type: Number
+		type: Number,
 	},
 	genres: {
 		type: String

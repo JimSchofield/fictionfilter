@@ -10,15 +10,15 @@ var mid = require('./middleware');
 var mockBookData = require('../mockdata.js');
 
 router.get('/', function(req, res) {
-	res.render('index', {title: "Page Title"});
+	res.render('index', {title: "Fiction Filter: Know what you read"});
 });
 
 router.get('/about', function(req, res) {
 	res.render('about', {title: "About"});
 });
 
-router.get('/books', function(req, res) {
-	res.render('books', {title: "Books", bookData: mockBookData});
+router.get('/addbook', mid.requiresLogin, function(req, res) {
+	res.render('addbook', {title: "Add a book..."});
 });
 
 router.get('/profile', mid.requiresLogin, function(req, res, next) {
@@ -27,7 +27,7 @@ router.get('/profile', mid.requiresLogin, function(req, res, next) {
 			if(error) {
 				return next(error);
 			} else {
-				return res.render('profile', { userData: user });
+				return res.render('profile', { userData: user, title: user.username + "'s Profile" });
 			}
 		});
 });

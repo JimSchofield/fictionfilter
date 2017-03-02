@@ -8,6 +8,46 @@ var Book = require('./bookmodel');
 
 var mockData = require('../mockdata.js'); //TEMP
 
+// SEARCH route ============
+
+//Search specific titles
+router.post('/search', function(req, res, next) {
+	Book.find({ title: { "$regex" : req.body.query, "$options": "i" }})
+		.limit(10)
+		.lean()
+		.exec(function(error, results) {
+			if (error) return next(error);
+
+			res.render('searchresults.pug',
+				{
+					query: req.body.query,
+					title: "Search results for: " + req.body.query,
+					results: results
+				}
+			);
+		});
+});
+
+//Search latest modified
+router.get('/searchlatest', function(req, res, next) {
+	Book.find({}, {}, { sort: { 'dateModified' : -1 } })
+		.limit(10)
+		.lean()
+		.exec(function(error, results) {
+			if (error) return next(error);
+			res.render('searchresults.pug',
+				{
+					query: req.body.query,
+					title: "Search results for: " + req.body.query,
+					results: results
+				}
+			);
+		});
+});
+
+//Search by Author
+
+
 
 // Profile routes =============
 
@@ -64,13 +104,14 @@ router.get('/users', function(req, res, next) {
 router.get('/users/:username', function(req, res, next) {
 	var username = req.params.username;
 	User.findOne({username: username})
+			.lean()
 			.exec(function(err, user) {
 				if(err) return next(err);
 				if(user === null) {
 					var err = new Error('User not found!');
 					next(err);
 				} else {
-					res.render('profile', { userData: user });
+					res.render('profile', { userData: user , title: user.username + "'s Profile"});
 				}
 			});
 });
@@ -84,7 +125,7 @@ router.put('/users/:username', function(req, res) {
 
 //BOOK ROUTES ==================
 
-//SIMPLE GET RESPONSE TEST
+//GET render book page
 router.get('/books/:title', function(req, res, next) {
 	var bookTitle = req.params.title;
 	Book.findOne({title: bookTitle})
@@ -95,11 +136,12 @@ router.get('/books/:title', function(req, res, next) {
 					var err = new Error('Book not found!');
 					next(err);
 				} else {
-					res.render('books', { bookData: book });
+					res.render('books', { bookData: book, title: book.title });
 				}
 			});
 });
 
+// GET book json
 router.get('/booksjson/:title', function(req, res, next) {
 	var bookTitle = req.params.title;
 	Book.findOne({title: bookTitle})
@@ -120,7 +162,7 @@ router.post('/books', function(req, res, next) {
 		if(err) { 
 			if (err) return next(err);
 		} else {
-			res.send("SUCCESS! YO!");
+			res.redirect('/books/' + escape(req.body.title));
 		}
 	});
 });

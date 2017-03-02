@@ -8,11 +8,12 @@ block content
 		div.contentBody
 			div.bookCard
 				div.bookCard-row
-					div.bookCard-left
-						if bookData.coverURL
+					if bookData.coverURL
+						div.bookCard-left
 							img(src="" + bookData.coverURL)
 					div.bookCard-right
-						p #{ bookData.pages } pages
+						if pages
+							p #{ bookData.pages } pages
 						p #{ bookData.genres }
 						p User reviews: #{ bookData.numberUserReviews }
 						p Average ratings:
@@ -20,12 +21,16 @@ block content
 						ul.ratingsList
 							each category, key in bookData.averageRatings
 								li.ratingsList-cat #{key} : #{ category }
+						p Book information last modified: #{ bookData.dateCreated} by #{ bookData.lastUpdatedBy }
+						if currentUser
+							form(action="/").form_center
+								button.button Add a Content Review
 
 			
 			each value in bookData.userReviews
 				hr
 				div.bookComment
-					h2 #{ value.username }
+					h2 Review by #{ value.username }:
 					ul.ratingsList
 						each category, key in value.ratings
 							li.ratingsList-cat #{ key } : #{ category.rating }

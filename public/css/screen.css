@@ -116,6 +116,7 @@ body {
 
 .button {
   display: block;
+  margin: auto;
   color: white;
   font-size: 24px;
   background: orange;
@@ -145,6 +146,9 @@ body {
 form > * + * {
   margin-top: 16px; }
 
+.form_center {
+  text-align: center; }
+
 .textInput {
   display: block;
   border: none;
@@ -153,7 +157,8 @@ form > * + * {
   outline: none; }
 
 .bookCard {
-  margin: 16px; }
+  margin: 16px;
+  text-align: center; }
 
 .bookCard > * + * {
   margin-top: 16px; }
@@ -165,6 +170,9 @@ form > * + * {
   padding: 16px; }
 
 .bookCard-right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   flex-grow: 1; }
 
 .bookCard-right > * + * {

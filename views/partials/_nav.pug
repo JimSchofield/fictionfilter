@@ -6,8 +6,9 @@ div.nav
 				a(href="/") Fiction Filter
 			li
 				a(href="/about").nav-main-item About
-			li
-				a(href="/books").nav-main-item Books
+			if currentUser
+				li
+					a(href="/addbook").nav-main-item Add a Book
 			if currentUser
 				li
 					a(href="/profile").nav-main-item Profile

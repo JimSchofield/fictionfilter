@@ -1,5 +1,6 @@
 .bookCard {
   margin: 16px;
+  text-align: center;
 }
 
 .bookCard > * + * {
@@ -14,6 +15,9 @@
 }
 
 .bookCard-right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   flex-grow: 1;
 }
 

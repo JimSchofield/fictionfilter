@@ -1,2 +1,3 @@
 div(id="js-mainSearch").searchBar.searchBar_inactive
-	input(type="text" placeholder="Search..." onClick="this.select()").textInput.textInput-mainSearch
+	form(method="POST" action="/search")
+		input(type="text" name="query" placeholder="Search..." onClick="this.select()").textInput.textInput-mainSearch
