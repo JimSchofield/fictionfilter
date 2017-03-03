@@ -13,3 +13,15 @@ form > * + * {
 	font-size:$FONT_SIZE;
 	outline: none;
 }
+
+.inline {
+	display: inline-block;
+}
+
+.hidden {
+	display: none;
+}
+
+.buttonSpacer {
+	margin: 0 8px;
+}

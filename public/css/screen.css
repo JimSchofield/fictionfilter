@@ -156,6 +156,15 @@ form > * + * {
   font-size: 24px;
   outline: none; }
 
+.inline {
+  display: inline-block; }
+
+.hidden {
+  display: none; }
+
+.buttonSpacer {
+  margin: 0 8px; }
+
 .bookCard {
   margin: 16px;
   text-align: center; }

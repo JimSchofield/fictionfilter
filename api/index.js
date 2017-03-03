@@ -6,6 +6,8 @@ var router = express.Router();
 var User = require('./usermodel');
 var Book = require('./bookmodel');
 
+var mid = require('../routes/middleware');
+
 var mockData = require('../mockdata.js'); //TEMP
 
 // SEARCH route ============
@@ -30,8 +32,9 @@ router.post('/search', function(req, res, next) {
 
 //Search latest modified
 router.get('/searchlatest', function(req, res, next) {
-	Book.find({}, {}, { sort: { 'dateModified' : -1 } })
+	Book.find({})
 		.limit(10)
+	    .sort({'dateUpdated': 'desc'})
 		.lean()
 		.exec(function(error, results) {
 			if (error) return next(error);
@@ -117,9 +120,13 @@ router.get('/users/:username', function(req, res, next) {
 });
 
 
-//PUT: /users/:name update profile
-router.put('/users/:username', function(req, res) {
-	//TODO 
+//PUT using post from a form update profile
+router.post('/users/update/:username', mid.requiresLogin, function(req, res, next) {
+	var name = req.params.username;
+	User.update( { "username": name }, { $set: req.body }, function(err) {
+		if (err) return next(err);
+		res.redirect("/profile");
+	});
 })
 
 

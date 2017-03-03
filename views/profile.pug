@@ -4,19 +4,22 @@ block content
 	section.pageContent
 		h1.pageHeading #{ userData.username }'s Profile
 		div.contentBody
-			p Number of reviews: 
-				span(id="js-reviewsMade") #{ userData.reviewsMade }
-			p Member since: 
-				span(id="js-registeredAt") #{ userData.registeredAt }
-			p Currently Reading:  
-				span(id="js-readingNow") #{ userData.readingNow }
-			p Favorite Genres:  
-				span(id="js-favoriteGenres") #{ userData.favoriteGenres }
-			p Favorite Books:  
-				span(id="js-favoriteBooks") #{ userData.favoriteBooks }
-			p Recent reviews:
-			ul
-				each post in userData.recentReviews
-					li.primaryText_center
-			if loggedIn
-				button.button Edit Profile Information
+			form(method="POST" action="/users/update/" + userData.username)
+				p Number of reviews: #{ userData.reviewsMade }
+				p Member since: #{ userData.registeredAt }
+				p Currently Reading:  
+					span(id="readingNow") #{ userData.readingNow }
+				p Favorite Genres:  
+					span(id="favoriteGenres") #{ userData.favoriteGenres }
+				p Favorite Books:  
+					span(id="favoriteBooks") #{ userData.favoriteBooks }
+				p Recent reviews:
+				ul
+					each post in userData.recentReviews
+						li.primaryText_center
+
+					button(type="submit" id="saveProfileButton").button.inline.hidden.buttonSpacer Save
+					if loggedIn
+						button(id="editProfileButton").button.inline Edit Profile Information
+					
+					button(id="cancelProfileEdit").button.inline.hidden.buttonSpacer Cancel 
