@@ -5,6 +5,7 @@ var express = require('express')
 var router = express.Router();
 var User = require('../api/usermodel.js');
 var mid = require('./middleware');
+var dateHelper = require('../api/index.js')
 
 //TEMP
 var mockBookData = require('../mockdata.js');
@@ -28,9 +29,13 @@ router.get('/profile', mid.requiresLogin, function(req, res, next) {
 				return next(error);
 			} else {
 
-				return res.render('profile', { userData: user, title: user.username + "'s Profile", loggedIn: true });
-			}
-		});
+				return res.render('profile', { 
+					userData: user, title: user.username + "'s Profile", 
+					loggedIn: true, 
+					memberSince: dateHelper.returnFormattedDate(user.registeredAt),
+				});
+		}
+	});
 });
 
 router.get('/register', mid.loggedIn, function(req, res) {

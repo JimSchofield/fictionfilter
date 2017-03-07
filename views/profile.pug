@@ -6,7 +6,7 @@ block content
 		div.contentBody
 			form(method="POST" action="/users/update/" + userData.username)
 				p Number of reviews: #{ userData.reviewsMade }
-				p Member since: #{ userData.registeredAt }
+				p Member since: #{ memberSince }
 				p Currently Reading:  
 					span(id="readingNow") #{ userData.readingNow }
 				p Favorite Genres:  

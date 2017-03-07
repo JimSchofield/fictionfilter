@@ -10,6 +10,18 @@ var mid = require('../routes/middleware');
 
 var mockData = require('../mockdata.js'); //TEMP
 
+// RETURN FORMATTED DATE
+function returnFormattedDate(mongooseDate) {
+	var date = new Date(mongooseDate);
+	var d = date.getDate();
+	var m = date.getMonth()+1;
+	var y = date.getFullYear();
+	var monthNames = ["January", "February", "March", "April", "May", "June",
+		  "July", "August", "September", "October", "November", "December"
+	];
+	return monthNames[m] + " " + d + ", " + y;
+}
+
 // SEARCH route ============
 
 //Search specific titles
@@ -22,7 +34,7 @@ router.post('/search', function(req, res, next) {
 
 			if (results.length == 0) {
 				var err = new Error("No books found!");
-				next(err);
+				return next(err);
 			}
 
 			res.render('searchresults.pug',
@@ -119,7 +131,14 @@ router.get('/users/:username', function(req, res, next) {
 					var err = new Error('User not found!');
 					next(err);
 				} else {
-					res.render('profile', { userData: user , title: user.username + "'s Profile"});
+
+					console.log("date is " + returnFormattedDate(user.registeredAt));
+
+
+					res.render('profile', { 
+						userData: user , 
+						title: user.username + "'s Profile", 
+						memberSince: returnFormattedDate(user.registeredAt)});
 				}
 			});
 });
@@ -148,7 +167,8 @@ router.get('/books/:title', function(req, res, next) {
 					var err = new Error('Book not found!');
 					next(err);
 				} else {
-					res.render('books', { bookData: book, title: book.title });
+
+					res.render('books', { bookData: book, title: book.title, lastUpdated: returnFormattedDate(book.dateUpdated) });
 				}
 			});
 });
@@ -196,6 +216,9 @@ router.get('/edit/:title', mid.requiresLogin, function(req, res, next) {
 					err.status = 500;
 					next(err);
 				} else {
+
+
+
 					res.render('editbook', { bookData: book, title: "Editing: " + book.title });
 				}
 			});
@@ -231,3 +254,4 @@ router.post('/books/edit/:title', mid.requiresLogin, function(req, res, next) {
 
 
 module.exports = router;
+module.exports.returnFormattedDate = returnFormattedDate;

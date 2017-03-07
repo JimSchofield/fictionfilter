@@ -1,0 +1,28 @@
+extends ./layout.pug
+
+block content
+	section.pageContent
+
+		h1.pageHeading Create a review for #{ bookData.title }
+		div.contentBody.contentBody_center
+			form(method='POST' action='')
+				div.form-group
+					label(for="title") Title:
+					input(type=text, name="title", id="title" placeholder="Title").textInput
+				div.form-group
+					label(for="author") Author:
+					input(type=text, name="author" placeholder="First Last").textInput
+				div.form-group
+					label(for="CoverURL") Url to cover thumbnail:
+					input(type=text, name="coverURL" placeholder="Optional").textInput
+				div.form-group
+					label(for="publishedYear") Published Year:
+					input(type=text, name='publishedYear').textInput
+				div.form-group
+					label(for="pages") Pages:
+					input(type='text', name='pages').textInput
+				div.form-group
+					label(for="genres") Genres:
+					input(type='text', name='genres' placeholder="Separate by commas").textInput
+				div.form-group
+					button(type=submit).button Add this Review

@@ -271,6 +271,9 @@ h2 {
 .smallText {
   font-size: 16px; }
 
+a {
+  color: black; }
+
 .loginOverlay {
   background: rgba(0, 0, 0, 0.4);
   position: absolute;
