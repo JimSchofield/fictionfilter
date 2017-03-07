@@ -1,0 +1,28 @@
+extends ./layout.pug
+
+block content
+	section.pageContent
+
+		h1.pageHeading Editing...
+		div.contentBody.contentBody_center
+			form(method='POST' action='/books/edit/' + bookData.title)
+				div.form-group
+					label(for="title") Title:
+					input(type=text, name="title", id="title" value=bookData.title).textInput
+				div.form-group
+					label(for="author") Author:
+					input(type=text, name="author" value=bookData.author).textInput
+				div.form-group
+					label(for="CoverURL") Url to cover thumbnail:
+					input(type=text, name="coverURL" value=bookData.coverURL).textInput
+				div.form-group
+					label(for="publishedYear") Published Year:
+					input(type=text, name='publishedYear' value=bookData.publishedYear).textInput
+				div.form-group
+					label(for="pages") Pages:
+					input(type='text', name='pages' value=bookData.pages).textInput
+				div.form-group
+					label(for="genres") Genres:
+					input(type='text', name='genres' placeholder="Separate by commas" value=bookData.genres).textInput
+				div.form-group
+					button(type=submit).button Save

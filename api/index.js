@@ -20,6 +20,11 @@ router.post('/search', function(req, res, next) {
 		.exec(function(error, results) {
 			if (error) return next(error);
 
+			if (results.length == 0) {
+				var err = new Error("No books found!");
+				next(err);
+			}
+
 			res.render('searchresults.pug',
 				{
 					query: req.body.query,
@@ -156,6 +161,7 @@ router.get('/booksjson/:title', function(req, res, next) {
 				if(err) return next(err);
 				if(book === null) {
 					var err = new Error('Book not found!');
+					err.status = 500;
 					next(err);
 				} else {
 					res.send(book);
@@ -165,16 +171,59 @@ router.get('/booksjson/:title', function(req, res, next) {
 
 //POST book to database
 router.post('/books', function(req, res, next) {
-	console.log(req.body);
+
 	req.body.lastUpdatedBy = req.session.username;
-	console.log(req.session.username);
-	console.log(req.body);
+
 	Book.create(req.body , function(err, user) {
 		if(err) { 
 			if (err) return next(err);
 		} else {
 			res.redirect('/books/' + escape(req.body.title));
 		}
+	});
+});
+
+// Get edit book page
+router.get('/edit/:title', mid.requiresLogin, function(req, res, next) {
+	var bookTitle = req.params.title;
+
+	Book.findOne({title: bookTitle})
+			.lean()
+			.exec(function(err, book) {
+				if(err) return next(err);
+				if(book === null) {
+					var err = new Error('Book not found!');
+					err.status = 500;
+					next(err);
+				} else {
+					res.render('editbook', { bookData: book, title: "Editing: " + book.title });
+				}
+			});
+});
+
+// POST update book content
+router.post('/books/edit/:title', mid.requiresLogin, function(req, res, next) {
+	var title = req.params.title;
+	var formUpdates = req.body;
+
+	var currentDate = new Date();
+
+	var bookUpdates = {
+		"title": title,
+		"author": formUpdates.author,
+		"coverURL" : formUpdates.coverURL,
+		"publishedYear" : formUpdates.publishedYear,
+		"pages" : formUpdates.pages,
+		"genres" : formUpdates.genres,
+		"dateUpdated": currentDate,
+		"lastUpdatedBy": req.session.username,
+	}
+
+	Book.update( { "title": title },
+					{ $set: bookUpdates},
+					function(err) {
+		if (err) return next(err);
+		res.redirect("/books/" + escape(title));
 	});
 });
 
