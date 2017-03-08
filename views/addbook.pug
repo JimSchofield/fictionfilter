@@ -5,10 +5,10 @@ block content
 
 		h1.pageHeading Create a book...
 		div.contentBody.contentBody_center
-			form(method='POST' action='/books')
-				div.form-group
-					label(for="title") Title:
-					input(type=text, name="title", id="title" placeholder="Title").textInput
+			form(method='POST' action='/books').form
+				div.form_group
+						label(for="title") Title:
+						input(type=text, name="title", id="title" placeholder="Title").textInput
 				div.form-group
 					label(for="author") Author:
 					input(type=text, name="author" placeholder="First Last").textInput

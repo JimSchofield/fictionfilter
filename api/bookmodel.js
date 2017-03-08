@@ -13,9 +13,6 @@ var UserCommentSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-	lastUpdatedBy: {
-		type: String
-	},
 	dateUpdated: {
 		type: Date,
 		default: Date.now

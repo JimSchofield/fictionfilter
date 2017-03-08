@@ -98,7 +98,7 @@ router.post('/users', function(req, res, next) {
 				return next(err);
 			} else {
 				req.session.userId = user._id;
-				res.redirect('/profile');
+				return res.redirect('/profile');
 			}
 		});
 		}
@@ -129,7 +129,7 @@ router.get('/users/:username', function(req, res, next) {
 				if(err) return next(err);
 				if(user === null) {
 					var err = new Error('User not found!');
-					next(err);
+					return next(err);
 				} else {
 
 					console.log("date is " + returnFormattedDate(user.registeredAt));
@@ -248,6 +248,22 @@ router.post('/books/edit/:title', mid.requiresLogin, function(req, res, next) {
 		if (err) return next(err);
 		res.redirect("/books/" + escape(title));
 	});
+});
+
+// BOOK COMMENT ROUTES
+
+// GET add comment for specific book
+router.get('/addcomment/:title', mid.requiresLogin, function(req, res, next) {
+	var bookTitle = req.params.title;
+
+	Book.findOne({title: bookTitle})
+			.lean()
+			.exec(function(err, book) {
+				res.render('addcomment', { 
+					title: "Adding a comment",
+					bookData: book
+				});
+			});
 });
 
 

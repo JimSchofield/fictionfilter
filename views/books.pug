@@ -24,7 +24,7 @@ block content
 						p.smallText Book information last modified: #{ lastUpdated } by 
 							a(href="/users/" + bookData.lastUpdatedBy) #{ bookData.lastUpdatedBy }
 						if currentUser
-								a(href="#").button Add a Content Review
+								a(href="/addcomment/" + bookData.title).button Add a Content Review
 								a(href="/edit/" + bookData.title).button Edit Book Info
 
 			
