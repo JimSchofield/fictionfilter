@@ -115,7 +115,7 @@ body {
   color: black; }
 
 .button {
-  display: block;
+  display: inline-block;
   margin: auto;
   color: white;
   font-size: 24px;
@@ -265,10 +265,10 @@ hr {
 
 .textBubble {
   position: relative;
+  margin: auto;
   color: white; }
 
 .textBubble-text {
-  position: absolute;
   background: #ffa100;
   padding: 12px;
   border-radius: 8px;

@@ -22,6 +22,22 @@ function returnFormattedDate(mongooseDate) {
 	return monthNames[m] + " " + d + ", " + y;
 }
 
+// AVERAGE BOOK REVIEWS
+
+// function averageBookRatings(title) {
+// 	Book.findOne({"title": title})
+// 		.exec(function(err, book) {
+// 			if (err) return next(err);
+
+// 			var substances, sex, violence, language, abuse, hate, immorality, occult;
+
+// 			book.userReviews.forEach(function(userReview) {
+
+
+// 			});
+// 		});
+// }
+
 // SEARCH route ============
 
 //Search specific titles
@@ -153,12 +169,32 @@ router.post('/users/update/:username', mid.requiresLogin, function(req, res, nex
 	});
 })
 
+//GET Find most recent reviews for a user
+
+router.get('/users/:username/mostrecent', function(req, res, next) {
+	var name = req.params.username;
+	Book.find({"userReviews.username": name})
+		.lean()
+	    .sort({'dateUpdated': 'desc'})
+		.exec(function(err, results) {
+			if (err) return next(err);
+			res.render('searchresults.pug',
+				{
+					query: "10 most recent reviews from " + name,
+					title: "10 most recent reviews from " + name,
+					results: results
+				}
+			);
+		});
+})
+
 
 //BOOK ROUTES ==================
 
 //GET render book page
 router.get('/books/:title', function(req, res, next) {
 	var bookTitle = req.params.title;
+	var currentUser = req.session.username;
 	Book.findOne({title: bookTitle})
 			.lean()
 			.exec(function(err, book) {
@@ -168,7 +204,12 @@ router.get('/books/:title', function(req, res, next) {
 					next(err);
 				} else {
 
-					res.render('books', { bookData: book, title: book.title, lastUpdated: returnFormattedDate(book.dateUpdated) });
+					res.render('books', { 
+						bookData: book, 
+						title: book.title, 
+						lastUpdated: returnFormattedDate(book.dateUpdated),
+						currentUser: currentUser
+					});
 				}
 			});
 });
@@ -265,6 +306,85 @@ router.get('/addcomment/:title', mid.requiresLogin, function(req, res, next) {
 				});
 			});
 });
+
+router.post('/sendcomment/:title',mid.requiresLogin, function(req, res, next) {
+	var title = req.params.title,
+		rightNow = new Date();
+
+	// format comment into user comment schema
+	var comment = {
+		username: req.session.username,
+		dateCreated: rightNow,
+		dateUpdated: rightNow,
+		ratings: {
+			substances: { 
+				rating: req.body.substances,
+				comment: req.body.substancesComments
+			},
+			sex: { 
+				rating: req.body.sex,
+				comment: req.body.sexComments
+			},
+			violence: { 
+				rating: req.body.violence,
+				comment: req.body.violenceComments
+			},
+			language: { 
+				rating: req.body.language,
+				comment: req.body.languageComments
+			},
+			abuse: { 
+				rating: req.body.abuse,
+				comment: req.body.abuseComments
+			},
+			hate: { 
+				rating: req.body.hate,
+				comment: req.body.hateComments
+			},
+			immorality: { 
+				rating: req.body.immorality,
+				comment: req.body.immoralityComments
+			},
+			occult: { 
+				rating: req.body.occult,
+				comment: req.body.occultComments
+			},
+		},
+		generalComments: req.body.generalComments
+	}
+
+
+
+	Book.findOne({"title": title, "userReviews.username": req.session.username})
+		.lean()
+		.exec(function(err, book) {
+			if (book) {
+				var err = new Error("Comment already created for this book!");
+				return next(err)
+			} else {
+			Book.update( {"title": title },
+				{ $push: { userReviews: comment}},
+				function(err) {
+					if (err) return next(err);
+
+					res.redirect('/books/' + escape(title));
+				});
+			}
+		});
+
+
+});
+
+router.post("/deletecomment/:title/:username", mid.requiresLogin, function(req, res, next) {
+	var title = req.params.title,
+		username = req.params.username;
+	Book.update( {"title": title}, { $pull: { userReviews: { "username": username }}}, function(err) {
+		if (err) return next(err);
+		res.redirect('/books/' + escape(title));
+	});
+});
+
+
 
 
 

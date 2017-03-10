@@ -19,11 +19,11 @@
 
 .textBubble {
 	position: relative;
+	margin: auto;
 	color: white;
 }
 
 .textBubble-text {
-	position: absolute;
 	background: $ORANGE;
 	padding: 12px;
 	border-radius: 8px;

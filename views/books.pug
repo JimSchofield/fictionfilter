@@ -39,7 +39,10 @@ block content
 									img(src="/textbubble.png" class="js-textBubble")
 									div.textBubble.textBubble_inactive
 										div.textBubble-text #{ category.comment}
-
-					p.bookComment-userNotes #{ value.generalComments }
+					if value.generalComments
+						p.bookComment-userNotes Notes: #{ value.generalComments }
+					if currentUser == value.username
+						form(method="POST" action="/deletecomment/" + bookData.title + "/" + value.username)
+							button(id="deleteComment").button Delete your review
 
 

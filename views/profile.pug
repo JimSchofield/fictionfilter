@@ -13,7 +13,8 @@ block content
 					span(id="favoriteGenres") #{ userData.favoriteGenres }
 				p Favorite Books:  
 					span(id="favoriteBooks") #{ userData.favoriteBooks }
-				p Recent reviews:
+				div
+					a(href="/users/" + userData.username + "/mostrecent").button Recent reviews
 				ul
 					each post in userData.recentReviews
 						li.primaryText_center
