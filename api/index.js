@@ -94,6 +94,7 @@ router.post('/users', function(req, res, next) {
 				return next(err);
 			} else {
 				req.session.userId = user._id;
+				req.session.username = user.username;
 				return res.redirect('/profile');
 			}
 		});
@@ -127,10 +128,6 @@ router.get('/users/:username', function(req, res, next) {
 					var err = new Error('User not found!');
 					return next(err);
 				} else {
-
-					console.log("date is " + helper.returnFormattedDate(user.registeredAt));
-
-
 					res.render('profile', { 
 						userData: user , 
 						title: user.username + "'s Profile", 
@@ -190,7 +187,6 @@ router.get('/books/:title', function(req, res, next) {
 						bookData: book, 
 						title: book.title, 
 						lastUpdated: helper.returnFormattedDate(book.dateUpdated),
-						currentUser: currentUser,
 						"averages": averages
 					});
 				}
@@ -216,9 +212,12 @@ router.get('/booksjson/:title', function(req, res, next) {
 //POST book to database
 router.post('/books', function(req, res, next) {
 
-	req.body.lastUpdatedBy = req.session.username;
+	var bookInfo = req.body;
 
-	Book.create(req.body , function(err, user) {
+	bookInfo.lastUpdatedBy = req.session.username;
+
+
+	Book.create(bookInfo , function(err, user) {
 		if(err) { 
 			if (err) return next(err);
 		} else {
@@ -288,7 +287,6 @@ router.get('/flagbook/:title', mid.requiresLogin, function(req, res, next) {
 		},
 		function(error, book) {
 			if (error) return next(error);
-			console.log(book);
 			res.redirect('/books/' + escape(title))
 		});
 
@@ -425,7 +423,6 @@ router.get("/flagcomment/:title/:username", mid.requiresLogin, function(req, res
 		},
 		function(error, book) {
 			if (error) return next(error);
-			console.log(book);
 			res.redirect('/books/' + escape(title))
 		});
 

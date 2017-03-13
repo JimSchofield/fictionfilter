@@ -31,7 +31,6 @@ router.get('/profile', mid.requiresLogin, function(req, res, next) {
 
 				return res.render('profile', { 
 					userData: user, title: user.username + "'s Profile", 
-					loggedIn: true, 
 					memberSince: helper.returnFormattedDate(user.registeredAt),
 				});
 		}

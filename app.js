@@ -21,7 +21,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost:27017/fictionfilter');
+mongoose.connect('mongodb://oldcoyote:Psalm861112@ds129050.mlab.com:29050/fictionfilter',
+	{
+		server: {
+    		socketOptions: {
+      			socketTimeoutMS: 0,
+		      connectionTimeout: 0
+    		}
+    	}
+  	}
+ );
 
 var db = mongoose.connection;
 
@@ -46,6 +55,7 @@ app.use(session({
 // make user ID available to templates
 app.use(function(req, res, next){
 	res.locals.currentUser = req.session.userId;
+	res.locals.username = req.session.username;
 	next();
 })
 

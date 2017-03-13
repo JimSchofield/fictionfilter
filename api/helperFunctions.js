@@ -31,7 +31,7 @@ function averageUserComments(userCommentArray) {
 			catTotal += userCommentArray[i].ratings[category].rating
 		}
 		var catAverage = catTotal / numberOfComments;
-		averageRatings[category] = catAverage;
+		averageRatings[category] = catAverage.toFixed(1);
 	}
 
 	return averageRatings

@@ -20,7 +20,7 @@ block content
 
 				br
 				button(type="submit" id="saveProfileButton").button.inline.hidden.buttonSpacer Save
-				if loggedIn
+				if userData.username == username
 					button(id="editProfileButton").button.inline Edit Profile Information
 				
 				button(id="cancelProfileEdit").button.inline.hidden.buttonSpacer Cancel 

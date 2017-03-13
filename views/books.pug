@@ -28,7 +28,7 @@ block content
 						if lastUpdated && bookData.lastUpdatedBy	
 							p.smallText Book information last modified: #{ lastUpdated } by 
 								a(href="/users/" + bookData.lastUpdatedBy) #{ bookData.lastUpdatedBy }
-						if currentUser
+						if username
 								a(href="/addcomment/" + bookData.title).button Add a Content Review
 								a(href="/edit/" + bookData.title).button Edit Book Info
 						if bookData.flagged
@@ -63,7 +63,7 @@ block content
 						a(href="/flagcomment/" + bookData.title + "/" + value.username)
 							img(src="/flag-white.png" alt="Flag review as questionable").icon_small
 							span.questionable (flag as questionable)
-					if currentUser == value.username
+					if username == value.username
 						form(method="POST" action="/deletecomment/" + bookData.title + "/" + value.username)
 							button(id="deleteComment").button.delete Delete your review
 

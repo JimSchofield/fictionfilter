@@ -7,7 +7,6 @@ var Schema = mongoose.Schema;
 var UserCommentSchema = new Schema({
 	username: {
 		type: String,
-		unique: true,
 		required: true
 	},
 	dateCreated: {
