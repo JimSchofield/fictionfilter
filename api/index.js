@@ -8,19 +8,7 @@ var Book = require('./bookmodel');
 
 var mid = require('../routes/middleware');
 
-var mockData = require('../mockdata.js'); //TEMP
-
-// RETURN FORMATTED DATE
-function returnFormattedDate(mongooseDate) {
-	var date = new Date(mongooseDate);
-	var d = date.getDate();
-	var m = date.getMonth()+1;
-	var y = date.getFullYear();
-	var monthNames = ["January", "February", "March", "April", "May", "June",
-		  "July", "August", "September", "October", "November", "December"
-	];
-	return monthNames[m] + " " + d + ", " + y;
-}
+var helper = require('./helperFunctions');
 
 // AVERAGE BOOK REVIEWS
 
@@ -40,9 +28,18 @@ function returnFormattedDate(mongooseDate) {
 
 // SEARCH route ============
 
+router.get('/search', function(req, res, next) {
+	res.render('search', { title: "Search"} )
+});
+
 //Search specific titles
 router.post('/search', function(req, res, next) {
-	Book.find({ title: { "$regex" : req.body.query, "$options": "i" }})
+	Book.find({ 
+				$or: [
+						{ title: { "$regex" : req.body.query, "$options": "i" }},
+						{author: { "$regex" : req.body.query, "$options": "i" }}
+					]
+			})
 		.limit(10)
 		.lean()
 		.exec(function(error, results) {
@@ -80,8 +77,6 @@ router.get('/searchlatest', function(req, res, next) {
 			);
 		});
 });
-
-//Search by Author ??
 
 
 
@@ -148,13 +143,13 @@ router.get('/users/:username', function(req, res, next) {
 					return next(err);
 				} else {
 
-					console.log("date is " + returnFormattedDate(user.registeredAt));
+					console.log("date is " + helper.returnFormattedDate(user.registeredAt));
 
 
 					res.render('profile', { 
 						userData: user , 
 						title: user.username + "'s Profile", 
-						memberSince: returnFormattedDate(user.registeredAt)});
+						memberSince: helper.returnFormattedDate(user.registeredAt)});
 				}
 			});
 });
@@ -204,11 +199,14 @@ router.get('/books/:title', function(req, res, next) {
 					next(err);
 				} else {
 
+					var averages = helper.averageUserComments(book.userReviews);
+
 					res.render('books', { 
 						bookData: book, 
 						title: book.title, 
-						lastUpdated: returnFormattedDate(book.dateUpdated),
-						currentUser: currentUser
+						lastUpdated: helper.returnFormattedDate(book.dateUpdated),
+						currentUser: currentUser,
+						"averages": averages
 					});
 				}
 			});
@@ -293,7 +291,7 @@ router.post('/books/edit/:title', mid.requiresLogin, function(req, res, next) {
 
 // BOOK COMMENT ROUTES
 
-// GET add comment for specific book
+// GET add comment page for specific book
 router.get('/addcomment/:title', mid.requiresLogin, function(req, res, next) {
 	var bookTitle = req.params.title;
 
@@ -307,7 +305,7 @@ router.get('/addcomment/:title', mid.requiresLogin, function(req, res, next) {
 			});
 });
 
-router.post('/sendcomment/:title',mid.requiresLogin, function(req, res, next) {
+router.post('/sendcomment/:title', mid.requiresLogin, function(req, res, next) {
 	var title = req.params.title,
 		rightNow = new Date();
 
@@ -367,7 +365,16 @@ router.post('/sendcomment/:title',mid.requiresLogin, function(req, res, next) {
 				function(err) {
 					if (err) return next(err);
 
-					res.redirect('/books/' + escape(title));
+					User.update({ "username": req.session.username },
+						{
+							$inc: { "reviewsMade": 1},
+							$push: {"recentReviews": title}
+						}, function () {
+
+							res.redirect('/books/' + escape(title));
+
+						});
+					
 				});
 			}
 		});
@@ -390,4 +397,3 @@ router.post("/deletecomment/:title/:username", mid.requiresLogin, function(req, 
 
 
 module.exports = router;
-module.exports.returnFormattedDate = returnFormattedDate;

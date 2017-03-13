@@ -15,5 +15,6 @@ function requiresLogin(req, res, next) {
 	}
 }
 
+
  module.exports.loggedIn = loggedIn;
  module.exports.requiresLogin = requiresLogin;

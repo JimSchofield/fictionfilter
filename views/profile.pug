@@ -13,14 +13,13 @@ block content
 					span(id="favoriteGenres") #{ userData.favoriteGenres }
 				p Favorite Books:  
 					span(id="favoriteBooks") #{ userData.favoriteBooks }
-				div
-					a(href="/users/" + userData.username + "/mostrecent").button Recent reviews
-				ul
-					each post in userData.recentReviews
-						li.primaryText_center
+				p Reviews: 
+				each post in userData.recentReviews
+					a(href="/books/" + escape(post)) #{ post }
 
-					button(type="submit" id="saveProfileButton").button.inline.hidden.buttonSpacer Save
-					if loggedIn
-						button(id="editProfileButton").button.inline Edit Profile Information
-					
-					button(id="cancelProfileEdit").button.inline.hidden.buttonSpacer Cancel 
+				br
+				button(type="submit" id="saveProfileButton").button.inline.hidden.buttonSpacer Save
+				if loggedIn
+					button(id="editProfileButton").button.inline Edit Profile Information
+				
+				button(id="cancelProfileEdit").button.inline.hidden.buttonSpacer Cancel 

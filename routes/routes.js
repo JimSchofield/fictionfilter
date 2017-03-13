@@ -5,7 +5,7 @@ var express = require('express')
 var router = express.Router();
 var User = require('../api/usermodel.js');
 var mid = require('./middleware');
-var dateHelper = require('../api/index.js')
+var helper = require('../api/helperFunctions');
 
 //TEMP
 var mockBookData = require('../mockdata.js');
@@ -32,7 +32,7 @@ router.get('/profile', mid.requiresLogin, function(req, res, next) {
 				return res.render('profile', { 
 					userData: user, title: user.username + "'s Profile", 
 					loggedIn: true, 
-					memberSince: dateHelper.returnFormattedDate(user.registeredAt),
+					memberSince: helper.returnFormattedDate(user.registeredAt),
 				});
 		}
 	});

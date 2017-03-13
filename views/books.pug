@@ -15,14 +15,18 @@ block content
 						if pages
 							p #{ bookData.pages } pages
 						p #{ bookData.genres }
-						p User reviews: #{ bookData.numberUserReviews }
+						p User reviews: #{ bookData.userReviews.length}
 						p Average ratings:
 						br
 						ul.ratingsList
-							each category, key in bookData.averageRatings
-								li.ratingsList-cat #{key} : #{ category }
-						p.smallText Book information last modified: #{ lastUpdated } by 
-							a(href="/users/" + bookData.lastUpdatedBy) #{ bookData.lastUpdatedBy }
+							if bookData.userReviews.length > 0
+								each category, key in averages
+									li.ratingsList-cat #{key} : #{ category }
+							else
+								li.ratingsList-cat No reviews yet!
+						if lastUpdated && bookData.lastUpdatedBy	
+							p.smallText Book information last modified: #{ lastUpdated } by 
+								a(href="/users/" + bookData.lastUpdatedBy) #{ bookData.lastUpdatedBy }
 						if currentUser
 								a(href="/addcomment/" + bookData.title).button Add a Content Review
 								a(href="/edit/" + bookData.title).button Edit Book Info

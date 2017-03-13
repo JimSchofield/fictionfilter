@@ -1,0 +1,11 @@
+extends ./layout.pug
+
+block content
+	section.pageContent
+		h1.pageHeading Search:
+		div.contentBody.contentBody_center
+			form(method="POST" action="/search").form_center
+
+				input(type="text" name="query" placeholder="Type in a book or author...").textInput
+				br
+				button(type="submit").button Search!
