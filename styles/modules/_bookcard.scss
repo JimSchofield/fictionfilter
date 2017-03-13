@@ -67,9 +67,11 @@ hr {
 }
 
 .bookCard img {
+  display: inline-block;
   max-width: 150px;
 }
 
 .questionable {
+  display: inline-block;
   font-size: $SMALL_TEXT;
 }

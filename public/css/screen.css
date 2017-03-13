@@ -133,10 +133,12 @@ body {
   background: red; }
 
 .icon {
+  display: inline-block;
   width: 30px;
   padding: 0px; }
 
 .icon_small {
+  display: inline-block;
   width: 20px; }
 
 .textInput-mainSearch {
@@ -252,9 +254,11 @@ hr {
   width: 80%; }
 
 .bookCard img {
+  display: inline-block;
   max-width: 150px; }
 
 .questionable {
+  display: inline-block;
   font-size: 16px; }
 
 .bookComment {

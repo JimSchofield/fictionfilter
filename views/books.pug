@@ -8,9 +8,10 @@ block content
 		div.contentBody
 			div.bookCard
 				div.bookCard-row
-					if bookData.coverURL
-						div.bookCard-left
+					div.bookCard-left
+						if bookData.coverURL
 							img(src="" + bookData.coverURL)
+					
 					div.bookCard-right
 						if pages
 							p #{ bookData.pages } pages
@@ -30,6 +31,14 @@ block content
 						if currentUser
 								a(href="/addcomment/" + bookData.title).button Add a Content Review
 								a(href="/edit/" + bookData.title).button Edit Book Info
+						if bookData.flagged
+							div
+								img(src="/flag-red.png").icon_small.  
+								span.questionable This has been flagged as a questionable book entry
+						else
+							a(href="/flagbook/" + bookData.title)
+								img(src="/flag-white.png" alt="Flag review as questionable").icon_small
+								span.questionable (flag as questionable book)
 
 			
 			each value in bookData.userReviews

@@ -111,7 +111,11 @@ var BookSchema = new Schema({
 		required: true,
 		default: 0
 	},
-	userReviews: [UserCommentSchema]
+	userReviews: [UserCommentSchema],
+	flagged: {
+		type: Boolean,
+		default: false
+	}
 });
 
 var Book = mongoose.model('Book', BookSchema);

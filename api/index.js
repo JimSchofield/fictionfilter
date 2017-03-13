@@ -10,21 +10,6 @@ var mid = require('../routes/middleware');
 
 var helper = require('./helperFunctions');
 
-// AVERAGE BOOK REVIEWS
-
-// function averageBookRatings(title) {
-// 	Book.findOne({"title": title})
-// 		.exec(function(err, book) {
-// 			if (err) return next(err);
-
-// 			var substances, sex, violence, language, abuse, hate, immorality, occult;
-
-// 			book.userReviews.forEach(function(userReview) {
-
-
-// 			});
-// 		});
-// }
 
 // SEARCH route ============
 
@@ -32,7 +17,7 @@ router.get('/search', function(req, res, next) {
 	res.render('search', { title: "Search"} )
 });
 
-//Search specific titles
+//Search specific titles or authors
 router.post('/search', function(req, res, next) {
 	Book.find({ 
 				$or: [
@@ -288,6 +273,27 @@ router.post('/books/edit/:title', mid.requiresLogin, function(req, res, next) {
 		res.redirect("/books/" + escape(title));
 	});
 });
+
+
+// FLAG book as questionable
+router.get('/flagbook/:title', mid.requiresLogin, function(req, res, next) {
+	var title = req.params.title;
+
+	Book.findOneAndUpdate(
+		{ "title": title},
+		{ 
+			"$set": { 
+				"flagged": true 
+			}
+		},
+		function(error, book) {
+			if (error) return next(error);
+			console.log(book);
+			res.redirect('/books/' + escape(title))
+		});
+
+
+})
 
 // BOOK COMMENT ROUTES
 
