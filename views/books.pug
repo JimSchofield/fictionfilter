@@ -35,7 +35,9 @@ block content
 			each value in bookData.userReviews
 				hr
 				div.bookComment
-					h2 Review by #{ value.username }:
+					div.reviewTitle
+						h2 Review by 
+							a(href="/users/" + value.username) #{ value.username }:
 					ul.ratingsList
 						each category, key in value.ratings
 							li.ratingsList-cat #{ key } : #{ category.rating }
@@ -45,8 +47,15 @@ block content
 										div.textBubble-text #{ category.comment}
 					if value.generalComments
 						p.bookComment-userNotes Notes: #{ value.generalComments }
+					if value.flagged
+						img(src="/flag-red.png").icon_small
+						span.questionable This has been flagged as questionable
+					else
+						a(href="/flagcomment/" + bookData.title + "/" + value.username)
+							img(src="/flag-white.png" alt="Flag review as questionable").icon_small
+							span.questionable (flag as questionable)
 					if currentUser == value.username
 						form(method="POST" action="/deletecomment/" + bookData.title + "/" + value.username)
-							button(id="deleteComment").button Delete your review
+							button(id="deleteComment").button.delete Delete your review
 
 

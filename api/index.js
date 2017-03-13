@@ -387,8 +387,42 @@ router.post("/deletecomment/:title/:username", mid.requiresLogin, function(req, 
 		username = req.params.username;
 	Book.update( {"title": title}, { $pull: { userReviews: { "username": username }}}, function(err) {
 		if (err) return next(err);
-		res.redirect('/books/' + escape(title));
+
+		//remove book from user profile
+		User.update(
+			{"username": username},
+			{
+				$pull: { "recentReviews": title}
+			}, function() {
+
+				res.redirect('/books/' + escape(title));
+
+			});
 	});
+});
+
+router.get("/flagcomment/:title/:username", mid.requiresLogin, function(req, res, next) {
+
+	var title = req.params.title;
+	var username = req.params.username;
+
+	var setQuery = "userReviews" + username + "flagged"
+	var bSetQuery = "book" + setQuery
+
+	//FIND COMMENT AND FLAG
+	Book.findOneAndUpdate(
+		{ "title": title, "userReviews.username": username},
+		{ 
+			"$set": { 
+				"userReviews.$.flagged": true 
+			}
+		},
+		function(error, book) {
+			if (error) return next(error);
+			console.log(book);
+			res.redirect('/books/' + escape(title))
+		});
+
 });
 
 

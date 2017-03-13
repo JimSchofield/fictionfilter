@@ -129,9 +129,15 @@ body {
 .button:active {
   background: #996300; }
 
+.delete {
+  background: red; }
+
 .icon {
   width: 30px;
   padding: 0px; }
+
+.icon_small {
+  width: 20px; }
 
 .textInput-mainSearch {
   width: 100%; }
@@ -247,6 +253,9 @@ hr {
 
 .bookCard img {
   max-width: 150px; }
+
+.questionable {
+  font-size: 16px; }
 
 .bookComment {
   width: 80%;

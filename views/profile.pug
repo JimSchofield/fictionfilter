@@ -15,7 +15,8 @@ block content
 					span(id="favoriteBooks") #{ userData.favoriteBooks }
 				p Reviews: 
 				each post in userData.recentReviews
-					a(href="/books/" + escape(post)) #{ post }
+					p
+						a(href="/books/" + escape(post)) #{ post }
 
 				br
 				button(type="submit" id="saveProfileButton").button.inline.hidden.buttonSpacer Save

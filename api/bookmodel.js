@@ -55,6 +55,10 @@ var UserCommentSchema = new Schema({
 	generalComments: {
 		type: String,
 		default: ""
+	},
+	flagged: {
+		type: Boolean,
+		default: false
 	}
 });
 
