@@ -2,7 +2,7 @@
 
 
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 
 var Schema = mongoose.Schema;
 
