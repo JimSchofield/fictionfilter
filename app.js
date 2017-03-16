@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 
 var path = require('path');
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
