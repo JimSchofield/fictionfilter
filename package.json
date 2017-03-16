@@ -16,7 +16,8 @@
     "express": "^4.14.1",
     "express-session": "^1.15.1",
     "mongoose": "^4.8.4",
-    "pug": "^2.0.0-beta11"
+    "pug": "^2.0.0-beta11",
+    "scrypt": "^6.0.3"
   },
   "devDependencies": {
     "browser-sync": "^2.18.8",
