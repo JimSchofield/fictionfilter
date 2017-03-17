@@ -3,22 +3,25 @@ extends ./layout.pug
 block content
 	section.pageContent
 
-		h1.pageHeading #{ bookData.title }
-		h2.pageHeading #{ bookData.author }, #{bookData.publishedYear}
+		h1.center #{ bookData.title }
 		div.contentBody
 			div.bookCard
-				div.bookCard-row
-					div.bookCard-left
-						if bookData.coverURL
-							img(src="" + bookData.coverURL)
-					
-					div.bookCard-right
-						if pages
-							p #{ bookData.pages } pages
-						p #{ bookData.genres }
-						p User reviews: #{ bookData.userReviews.length}
-						p Average ratings:
-						br
+				div.bookCard-inner
+					div.bookCard-inner-wrap
+						div.bookCard-inner-wrap-cover
+							if bookData.coverURL
+								img(src="" + bookData.coverURL).bookCover
+
+						div.bookCard-inner-wrap-details.center
+							p #{ bookData.author }, #{bookData.publishedYear}
+							if pages
+								p #{ bookData.pages } pages
+							p #{ bookData.genres }
+							p User reviews: #{ bookData.userReviews.length}
+
+
+					div.bookCard-inner-ratings
+						h3.center Average Ratings
 						ul.ratingsList
 							if bookData.userReviews.length > 0
 								each category, key in averages
@@ -41,30 +44,31 @@ block content
 								span.questionable (flag as questionable book)
 
 			
-			each value in bookData.userReviews
-				hr
-				div.bookComment
-					div.reviewTitle
-						h2 Review by 
-							a(href="/users/" + value.username) #{ value.username }:
-					ul.ratingsList
-						each category, key in value.ratings
-							li.ratingsList-cat #{ key } : #{ category.rating }
-								if category.comment
-									img(src="/textbubble.png" class="js-textBubble")
-									div.textBubble.textBubble_inactive
-										div.textBubble-text #{ category.comment}
-					if value.generalComments
-						p.bookComment-userNotes Notes: #{ value.generalComments }
-					if value.flagged
-						img(src="/flag-red.png").icon_small
-						span.questionable This has been flagged as questionable
-					else
-						a(href="/flagcomment/" + bookData.title + "/" + value.username)
-							img(src="/flag-white.png" alt="Flag review as questionable").icon_small
-							span.questionable (flag as questionable)
-					if username == value.username
-						form(method="POST" action="/deletecomment/" + bookData.title + "/" + value.username)
-							button(id="deleteComment").button.delete Delete your review
+			div.bookComments
+				each value in bookData.userReviews
+					hr
+					div.bookComment
+						div.reviewTitle
+							h2 Review by 
+								a(href="/users/" + value.username) #{ value.username }:
+						ul.ratingsList
+							each category, key in value.ratings
+								li.ratingsList-cat #{ key } : #{ category.rating }
+									if category.comment
+										img(src="/textbubble.png" class="js-textBubble")
+										div.textBubble.textBubble_inactive
+											div.textBubble-text #{ category.comment}
+						if value.generalComments
+							p.bookComment-userNotes Notes: #{ value.generalComments }
+						if value.flagged
+							img(src="/flag-red.png").icon_small
+							span.questionable This has been flagged as questionable
+						else
+							a(href="/flagcomment/" + bookData.title + "/" + value.username)
+								img(src="/flag-white.png" alt="Flag review as questionable").icon_small
+								span.questionable (flag as questionable)
+						if username == value.username
+							form(method="POST" action="/deletecomment/" + bookData.title + "/" + value.username)
+								button(id="deleteComment").button.delete Delete your review
 
 

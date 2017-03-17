@@ -1,3 +1,7 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -42,275 +46,95 @@ table {
   border-spacing: 0; }
 
 html {
-  background: url("../back.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; }
+  font-size: 1.125em; }
 
-.nav {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.7);
-  font-family: "Raleway", sans-serif; }
+body {
+  background-color: white;
+  font-family: 'Lora';
+  font-weight: 400;
+  line-height: 1.45em;
+  color: #000022;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 0px 16px 0px 16px; }
+p {
+  margin-bottom: 1.3em; }
 
-.nav-main {
-  display: flex;
-  align-items: center; }
+h1, h2, h3, h4 {
+  margin: 1.414em 0 0.5em;
+  font-weight: 400;
+  line-height: 1.2; }
 
-.nav-main-item {
-  display: inline-block;
-  padding: 8px;
-  text-decoration: none;
-  color: black; }
+h1 {
+  margin-top: 0;
+  font-size: 2.441em; }
+
+h2 {
+  font-size: 1.953em; }
+
+h3 {
+  font-size: 1.563em; }
+
+h4 {
+  font-size: 1.25em; }
+
+small {
+  font-size: 0.8em; }
 
 * {
   box-sizing: border-box; }
 
-body {
-  font-size: 24px;
-  -webkit-font-smoothing: antialiased; }
+html {
+  width: 100%; }
 
-.wrap {
-  margin: auto;
-  max-width: 800px; }
+body {
+  width: 100%;
+  background: #FEFEFA; }
 
 .pageContent {
-  padding: 24px;
-  margin-top: 32px; }
-
-.pageContent > * + * {
-  margin-top: 30px; }
-
-.contentBody {
-  background: rgba(255, 255, 255, 0.7);
-  padding: 24px;
-  border-radius: 8px;
-  font-family: "Raleway", sans-serif; }
-
-.contentBody_center {
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
-
-.contentBody > * + * {
-  margin-top: 32px; }
-
-.primaryText_center {
-  text-align: center; }
-
-.logo {
-  padding: 12px;
-  font-size: 40px;
-  font-family: "Raleway", sans-serif; }
-
-.logo > a {
-  text-decoration: none;
-  color: black; }
-
-.button {
-  display: inline-block;
-  margin: auto;
-  color: white;
-  font-size: 24px;
-  background: orange;
-  border: 1px solid white;
-  border-radius: 4px;
-  outline: none;
-  padding: 4px;
-  text-decoration: none; }
-
-.button:active {
-  background: #996300; }
-
-.delete {
-  background: red; }
-
-.icon {
-  display: inline-block;
-  width: 30px;
-  padding: 0px; }
-
-.icon_small {
-  display: inline-block;
-  width: 20px; }
-
-.textInput-mainSearch {
-  width: 100%; }
-
-.searchBar {
-  max-height: 60px;
-  overflow: hidden;
-  transition: max-height 1s; }
-
-.searchBar_inactive {
-  max-height: 0px;
-  transition: max-height 1s; }
-
-form > * + * {
-  margin-top: 16px; }
-
-.form_center {
-  text-align: center; }
-
-.form_table {
-  display: table;
-  width: 100%; }
-
-.form_row {
-  display: table-row;
-  text-align: center; }
-
-.form_col {
-  display: table-cell;
-  width: 50%;
+  margin: 1.45em auto;
   padding: 16px;
-  vertical-align: middle; }
-
-.right {
-  text-align: right; }
-
-.form_row {
-  display: table-row;
-  align-items: center; }
-
-.textInput {
-  display: block;
-  border: none;
-  padding: 16px;
-  font-size: 24px;
-  outline: none; }
-
-.inline {
-  display: inline-block; }
-
-.hidden {
-  display: none; }
-
-.buttonSpacer {
-  margin: 0 8px; }
-
-select {
-  margin: 8px;
-  font-size: 24px; }
-
-.bookCard {
-  margin: 16px;
-  text-align: center; }
-
-.bookCard > * + * {
-  margin-top: 16px; }
-
-.bookCard-row {
-  display: flex; }
-
-.bookCard-row > div {
-  padding: 16px; }
-
-.bookCard-right {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  flex-grow: 1; }
-
-.bookCard-right > * + * {
-  margin-top: 16px; }
-
-.ratingsList {
-  list-style: none;
-  padding-left: 0;
-  max-width: 350px;
-  margin: auto;
-  background: white;
-  padding: 8px;
-  text-align: center;
-  border-radius: 8px; }
-
-.color0 {
-  color: #0B6670; }
-
-.color1 {
-  color: #12A9BA; }
-
-.color2 {
-  color: #ABD19E; }
-
-.color3 {
-  color: #E8D337; }
-
-.color4 {
-  color: #FFB73A; }
-
-.color5 {
-  color: #E85100; }
-
-hr {
-  width: 80%; }
-
-.bookCard img {
-  display: inline-block;
-  max-width: 150px; }
-
-.questionable {
-  display: inline-block;
-  font-size: 16px; }
-
-.bookComment {
-  width: 80%;
-  margin: auto; }
-
-.bookComment > * + * {
-  margin-top: 12px; }
-
-.bookComment > h2 {
-  font-size: 28px; }
-
-.js-textBubble {
-  width: 16px;
-  margin-left: 8px;
-  cursor: help; }
-
-.textBubble {
-  position: relative;
-  margin: auto;
-  color: white; }
-
-.textBubble-text {
-  background: #ffa100;
-  padding: 12px;
-  border-radius: 8px;
-  height: initial; }
-
-.textBubble_inactive {
-  height: 0px;
-  width: 0px;
-  overflow: hidden;
-  transition: .5s; }
-
-h1 {
-  font-size: 40px; }
-
-h2 {
-  font-size: 32px; }
-
-.pageHeading {
-  color: white;
-  font-family: "Raleway", sans-serif; }
-
-.primaryText_center {
-  text-align: center; }
-
-.smallText {
-  font-size: 16px; }
+  max-width: 30em; }
 
 a {
-  color: black; }
+  color: #c42847; }
+
+.nav {
+  width: 100%;
+  box-shadow: 0px 0px 4px #969696; }
+
+.nav-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Courier", "Lora", times, serif; }
+
+.logo {
+  padding: 2.9em 1.45em;
+  width: 100%;
+  text-align: center; }
+
+.logo > a {
+  font-weight: 400;
+  color: #c42847;
+  font-size: 1.75em; }
+
+.nav-main {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: #c42847; }
+
+.nav-main > li {
+  display: inline-block; }
+
+.nav-main-item {
+  display: inline-block;
+  padding: 8px 12px;
+  color: white;
+  text-decoration: none; }
 
 .loginOverlay {
   background: rgba(0, 0, 0, 0.4);
@@ -327,17 +151,119 @@ a {
   display: none; }
 
 .loginOverlay-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffa100;
+  background: #e28413;
   width: 350px;
   padding: 16px;
-  border-radius: 8px;
   color: white; }
+
+.loginOverlay-container-form > * + * {
+  margin-top: 8px; }
 
 .loginOverlay-container-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; }
+
+.icon {
+  display: inline-block;
+  width: 20px; }
+
+.bookCover {
+  display: block;
+  max-width: 200px; }
+
+.searchBar {
+  max-height: 60px;
+  overflow: hidden;
+  transition: max-height 1s;
+  box-shadow: 0px 0px 4px #969696; }
+
+.searchBar_inactive {
+  max-height: 0px;
+  transition: max-height 1s; }
+
+.inputText_searchBar {
+  width: 100%;
+  border: 2px solid #c42847; }
+
+.form-table {
+  display: table;
+  width: 100%;
+  padding: 4px; }
+
+.form-table_center {
+  text-align: center; }
+
+.form-table-row {
+  display: table-row; }
+
+.form-table-row-cell {
+  display: table-cell;
+  padding: 4px; }
+
+input[type=text] {
+  padding: 8px;
+  border: 1px solid #c42847;
+  width: 100%;
+  font-family: "Lora", times, serif;
+  -webkit-fill-color: #FEFEFA !important; }
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset; }
+
+input[type=text]:focus {
+  outline: none; }
+
+.addMargin {
+  margin: 16px 0px; }
+
+button {
+  background: #e28413;
+  border: 1px solid;
+  outline: none;
+  color: white;
+  font-family: "Courier";
+  padding: 8px; }
+
+.table {
+  display: table;
+  border-spacing: 8px; }
+
+.table-row {
+  display: table-row; }
+
+.table-cell {
+  display: table-cell; }
+
+.bookCard-inner-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; }
+
+.bookCard-inner-wrap > * {
+  padding: 16px; }
+
+.bookCard-inner-wrap-cover {
+  display: block;
+  line-height: 0; }
+
+.bookCard-inner-wrap-details {
+  display: block;
+  flex-grow: 1; }
+
+.hidden {
+  display: none; }
+
+.center {
+  text-align: center; }
+
+.alignRight {
+  text-align: right; }
+
+.bold {
+  font-weight: 700; }
+
+.floatLeft {
+  float: left; }

@@ -1,0 +1,33 @@
+.loginOverlay {
+	background: rgba(0,0,0,.4);
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.loginOverlay_hidden {
+	display: none;
+}
+
+.loginOverlay-container {
+	background: $ORANGE;
+	width: 350px;
+	padding: 16px;
+	color: white;
+}
+
+.loginOverlay-container-form > * + * {
+	margin-top: 8px;
+}
+.loginOverlay-container-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	
+}

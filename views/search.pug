@@ -2,10 +2,9 @@ extends ./layout.pug
 
 block content
 	section.pageContent
-		h1.pageHeading Search:
-		div.contentBody.contentBody_center
-			form(method="POST" action="/search").form_center
+		h1 Search:
+		div.center
+			form(method="POST" action="/search")
 
-				input(type="text" name="query" placeholder="Type in a book or author...").textInput
-				br
+				input(type="text" name="query" placeholder="Type in a book or author...").addMargin
 				button(type="submit").button Search!

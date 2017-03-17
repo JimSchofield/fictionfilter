@@ -1,0 +1,22 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	width: 100%;
+}
+
+body {
+	width: 100%;
+	background: $BACKGROUND_COLOR;
+}
+
+.pageContent {
+	margin:  $LINE_HEIGHT auto;
+	padding: 16px;
+	max-width: 30em;
+}
+
+a {
+	color: $MAROON;
+}

@@ -1,0 +1,15 @@
+.searchBar {
+	max-height: 60px;
+	overflow: hidden;
+	transition: max-height 1s;
+	box-shadow: 0px 0px 4px rgba(150,150,150,1);
+}
+.searchBar_inactive {
+	max-height: 0px;
+	transition: max-height 1s;
+}
+
+.inputText_searchBar {
+	width: 100%;
+	border: 2px solid $MAROON;
+}

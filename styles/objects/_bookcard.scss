@@ -1,0 +1,20 @@
+.bookCard-inner-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.bookCard-inner-wrap > * {
+	padding: 16px;
+}
+
+.bookCard-inner-wrap-cover {
+	display: block;
+	line-height: 0;
+}
+
+.bookCard-inner-wrap-details {
+	display: block;
+	flex-grow: 1;
+}

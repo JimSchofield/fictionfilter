@@ -5,22 +5,44 @@ block content
 		h1.pageHeading #{ userData.username }'s Profile
 		div.contentBody
 			form(method="POST" action="/users/update/" + userData.username)
-				p Number of reviews: #{ userData.reviewsMade }
-				p Member since: #{ memberSince }
-				p Currently Reading:  
-					span(id="readingNow") #{ userData.readingNow }
-				p Favorite Genres:  
-					span(id="favoriteGenres") #{ userData.favoriteGenres }
-				p Favorite Books:  
-					span(id="favoriteBooks") #{ userData.favoriteBooks }
-				p Reviews: 
-				each post in userData.recentReviews
-					p
-						a(href="/books/" + escape(post)) #{ post }
+				div.table
+					div.table-row
+						div.table-cell.alignRight
+							p.bold.bold Number of reviews:
+						div.table-cell.center
+							p #{ userData.reviewsMade }
+					div.table-row
+						div.table-cell.alignRight
+							p.bold Member since: 
+						div.table-cell.center
+							p #{ memberSince }
+					div.table-row
+						div.table-cell.alignRight
+							p.bold Currently Reading:  
+						div.table-cell.center
+							span(id="readingNow") #{ userData.readingNow }
+					div.table-row
+						div.table-cell.alignRight
+							p.bold Favorite Genres:  
+						div.table-cell.center
+							span(id="favoriteGenres") #{ userData.favoriteGenres }
+					div.table-row
+						div.table-cell.alignRight
+							p.bold Favorite Books:  
+						div.table-cell.center
+							span(id="favoriteBooks") #{ userData.favoriteBooks }
+					div.table-row
+						div.table-cell.alignRight
+							p.bold  Reviews: 
+						div.table-cell.center
+							each post in userData.recentReviews
+								p
+									a(href="/books/" + escape(post)) #{ post }
 
 				br
-				button(type="submit" id="saveProfileButton").button.inline.hidden.buttonSpacer Save
-				if userData.username == username
-					button(id="editProfileButton").button.inline Edit Profile Information
-				
-				button(id="cancelProfileEdit").button.inline.hidden.buttonSpacer Cancel 
+				div.center
+					button(type="submit" id="saveProfileButton").button.hidden.buttonSpacer Save
+					if userData.username == username
+						button(id="editProfileButton").button Edit Profile Information
+					
+					button(id="cancelProfileEdit").button.hidden.buttonSpacer Cancel 

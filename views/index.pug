@@ -1,10 +1,10 @@
 extends ./layout.pug
 
 block content
-	section.pageContent
-		h1.pageHeading Know what you read
-		div.contentBody.contentBody_center
-			p.primaryText_center Read content reviews for fiction so you can judge how appropriate it is.
-			p.primaryText_center Post reviews on books to help others judge for themselves.
-			form(method="GET" action="/searchlatest").form_center
-				button.button See latest reviews
+	section.pageContent.center
+		h1.heading Know what you&nbsp;read
+		div.contentBody
+			p Read content reviews for fiction so you can judge how appropriate it is.
+			p Post reviews on books to help others judge for themselves.
+			form(method="GET" action="/searchlatest")
+				button See latest reviews

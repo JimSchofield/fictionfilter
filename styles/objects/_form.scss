@@ -1,0 +1,38 @@
+.form-table {
+	display: table;
+	width: 100%;
+	padding: 4px;
+}
+
+.form-table_center {
+	text-align: center;
+}
+
+.form-table-row {
+	display: table-row;
+}
+
+.form-table-row-cell {
+	display: table-cell;
+	padding: 4px;
+}
+
+input[type=text] {
+	padding: 8px;
+	border: 1px solid $MAROON;
+	width: 100%;
+	font-family: $FONT_STACK;
+	-webkit-fill-color: $BACKGROUND_COLOR !important;
+}
+
+input:-webkit-autofill {
+	    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+input[type=text]:focus {
+    outline: none;
+}
+
+.addMargin {
+	margin: 16px 0px;
+}

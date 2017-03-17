@@ -8,6 +8,7 @@ var uglify = require('gulp-uglify');
 gulp.task('sass', function() {
 	gulp.src('styles/**/*.scss')
 		.pipe(sass().on('error', sass.logError))
+		.pipe(rename('screen.css'))
 		.pipe(gulp.dest('./public/css/'));
 });
 

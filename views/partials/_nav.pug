@@ -1,9 +1,13 @@
-div.nav
+nav.nav
 	div.nav-inner
-
+		div.logo 
+			a(href="/") Fiction Filter
 		ul.nav-main
-			div.logo 
-				a(href="/") Fiction Filter
+			li
+				a(href="/search").nav-main-item Search
+			li
+				a(href="#0").nav-main-item
+					img(src="/search.png" id="js-searchIcon").icon
 			li
 				a(href="/about").nav-main-item About
 			if currentUser
@@ -15,16 +19,12 @@ div.nav
 			if !currentUser
 				li
 					a(href="/register").nav-main-item Signup
-			li
-				a(href="/search").nav-main-item Search
-			li
-				a(href="#0")
-					img(src="/search.png" id="js-searchIcon").icon
-		div.nav-login
+
 			if currentUser
-				form(action="/logout")
-					button(id="js-logout").button.button-primary Log Out
+				li
+					a(href="/logout" id="js-logout").nav-main-item Log Out
 			else
-				button(id="js-login").button.button-primary Login
+				li
+					a(href="#" id="js-login").nav-main-item Login
 
 	include _loginOverlay.pug

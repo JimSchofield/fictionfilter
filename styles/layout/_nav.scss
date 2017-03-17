@@ -1,0 +1,51 @@
+
+.nav {
+	width: 100%;
+	box-shadow: 0px 0px 4px rgba(150,150,150,1);
+}
+
+.nav-inner {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	font-family: $NAV_FONT, $FONT_STACK;
+}
+
+.logo {
+	padding: (2*$LINE_HEIGHT) ($LINE_HEIGHT);
+	width: 100%;
+	text-align: center;
+}
+.logo > a {
+	font-weight: 400;
+	color: $MAROON;
+	font-size: 1.75em;
+	// text-decoration: none;
+}
+
+.nav-main {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	background: $MAROON;
+}
+
+.nav-main > li {
+	display: inline-block;
+}
+
+.nav-main-item {
+	display: inline-block;
+	padding: 8px 12px;
+	color: white;
+	text-decoration: none;
+}
+
+
+
+
+
+

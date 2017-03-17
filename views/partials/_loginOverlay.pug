@@ -1,11 +1,15 @@
 div(id="loginOverlay").loginOverlay.loginOverlay_hidden
 	div.loginOverlay-container
-		form(method='POST' action='/login').loginOverlay-container-form
-			div.form-group
-				label(for="username") Username:
-				input(type=text, name="username", id="username" placeholder="Username").textInput
-			div.form-group
-				label(for="password") Password:
-				input(type='password', name='password' placeholder="Password").textInput
-			div.form-group
-				button(type=submit).button Login!
+		form(method='POST' action='/login').loginOverlay-container-form.form-table.center
+			div.form-table.form-table_center
+				div.form-table-row
+					div.form-table-row-cell
+						label(for="username") Username: 
+					div.form-table-row-cell
+						input(type=text, name="username", id="username" placeholder="Username")
+				div.form-table-row
+					div.form-table-row-cell
+						label(for="password") Password: 
+					div.form-table-row-cell
+						input(type='password', name='password' placeholder="Password")
+			button(type=submit).button Login!
