@@ -1,10 +1,27 @@
 button {
+	display: inline-block;
 	background: $ORANGE;
 	border: 1px solid;
 	outline: none;
 
 	color: white;
 	font-family: $NAV_FONT;
+	font-size: $BUTTON_FONT_SIZE;
 
 	padding: 8px;
+}
+
+.button {
+	margin: 8px;
+	display: inline-block;
+	background: $ORANGE;
+	border: 1px solid;
+	padding: 0px 8px;
+	outline: none;
+
+	color: white;
+	font-family: $NAV_FONT;
+	font-size: $BUTTON_FONT_SIZE;
+
+	text-decoration: none;
 }

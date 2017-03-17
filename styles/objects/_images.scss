@@ -4,7 +4,14 @@
 
 }
 
+.icon_small {
+	display: inline-block;
+	width: 20px;
+	margin: 0 4px;
+}
+
 .bookCover {
 	display: block;
 	max-width: 200px;
+	margin: auto;
 }

@@ -5,16 +5,57 @@
 	flex-wrap: wrap;
 }
 
-.bookCard-inner-wrap > * {
-	padding: 16px;
-}
-
 .bookCard-inner-wrap-cover {
 	display: block;
 	line-height: 0;
+	flex-grow: 1;
 }
 
 .bookCard-inner-wrap-details {
 	display: block;
 	flex-grow: 1;
+}
+
+.bookCard-inner-ratings {
+	text-align: center;
+	padding-bottom: 27px;
+}
+
+.ratingsList {
+	margin: auto;
+	display: inline-block;
+	border: 1px solid $MAROON;
+	padding: 16px;
+}
+
+.bookComments {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.bookComment {
+	width: 250px;
+}
+
+.reviewTitle > h3 {
+	margin: .5em auto;
+}
+
+.bookComment-ratingsList {}
+
+
+.textBubble {
+
+}
+
+.textBubble_inactive {
+	height: 0;
+	width: 0;
+	overflow: hidden;
+}
+
+.bookCard-reviews {
+	margin-top: $LINE-HEIGHT;
 }

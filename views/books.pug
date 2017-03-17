@@ -4,12 +4,12 @@ block content
 	section.pageContent
 
 		h1.center #{ bookData.title }
-		div.contentBody
+		section
 			div.bookCard
 				div.bookCard-inner
 					div.bookCard-inner-wrap
-						div.bookCard-inner-wrap-cover
-							if bookData.coverURL
+						if bookData.coverURL
+							div.bookCard-inner-wrap-cover
 								img(src="" + bookData.coverURL).bookCover
 
 						div.bookCard-inner-wrap-details.center
@@ -22,53 +22,65 @@ block content
 
 					div.bookCard-inner-ratings
 						h3.center Average Ratings
+
 						ul.ratingsList
 							if bookData.userReviews.length > 0
 								each category, key in averages
 									li.ratingsList-cat #{key} : #{ category }
 							else
 								li.ratingsList-cat No reviews yet!
-						if lastUpdated && bookData.lastUpdatedBy	
-							p.smallText Book information last modified: #{ lastUpdated } by 
-								a(href="/users/" + bookData.lastUpdatedBy) #{ bookData.lastUpdatedBy }
-						if username
-								a(href="/addcomment/" + bookData.title).button Add a Content Review
-								a(href="/edit/" + bookData.title).button Edit Book Info
+					div.bookCard-inner-status.center
 						if bookData.flagged
 							div
-								img(src="/flag-red.png").icon_small.  
-								span.questionable This has been flagged as a questionable book entry
+								img(src="/flag-red.png").icon_small 
+								small This has been flagged as a questionable book entry
 						else
 							a(href="/flagbook/" + bookData.title)
 								img(src="/flag-white.png" alt="Flag review as questionable").icon_small
-								span.questionable (flag as questionable book)
+								small (flag as questionable book)
 
-			
-			div.bookComments
-				each value in bookData.userReviews
-					hr
-					div.bookComment
-						div.reviewTitle
-							h2 Review by 
-								a(href="/users/" + value.username) #{ value.username }:
-						ul.ratingsList
-							each category, key in value.ratings
-								li.ratingsList-cat #{ key } : #{ category.rating }
-									if category.comment
-										img(src="/textbubble.png" class="js-textBubble")
-										div.textBubble.textBubble_inactive
-											div.textBubble-text #{ category.comment}
-						if value.generalComments
-							p.bookComment-userNotes Notes: #{ value.generalComments }
-						if value.flagged
-							img(src="/flag-red.png").icon_small
-							span.questionable This has been flagged as questionable
-						else
-							a(href="/flagcomment/" + bookData.title + "/" + value.username)
-								img(src="/flag-white.png" alt="Flag review as questionable").icon_small
-								span.questionable (flag as questionable)
-						if username == value.username
-							form(method="POST" action="/deletecomment/" + bookData.title + "/" + value.username)
-								button(id="deleteComment").button.delete Delete your review
+						if lastUpdated && bookData.lastUpdatedBy	
+							p
+								small Book information last modified: #{ lastUpdated } by 
+								a(href="/users/" + bookData.lastUpdatedBy).smallHyperlink #{ bookData.lastUpdatedBy }
+
+					div.bookCard-inner-actions.center
+						div
+							if username
+									a(href="/addcomment/" + bookData.title).button Add a Content Review
+									a(href="/edit/" + bookData.title).button Edit Book Info
+
+
+
+		if bookData.userReviews
+			section.bookCard-reviews
+				h2 User Reviews
+				div.bookComments.center
+					each value in bookData.userReviews
+						div.bookComment
+							div.reviewTitle.center
+								h3
+									a(href="/users/" + value.username) #{ value.username }:
+							div.bookComment-ratingsList
+								ul.ratingsList
+									each category, key in value.ratings
+										li.ratingsList-cat #{ key } : #{ category.rating }
+											if category.comment
+												img(src="/textbubble.png" class="js-textBubble").icon_small
+												div.textBubble.textBubble_inactive
+													div.textBubble-text #{ category.comment}
+							if value.generalComments
+								p.bookComment-userNotes Notes: #{ value.generalComments }
+							if value.flagged
+								p
+									img(src="/flag-red.png").icon_small
+									small This has been flagged as questionable
+							else
+								a(href="/flagcomment/" + bookData.title + "/" + value.username)
+									img(src="/flag-white.png" alt="Flag review as questionable").icon_small
+									small (flag as questionable)
+							if username == value.username
+								form(method="POST" action="/deletecomment/" + bookData.title + "/" + value.username)
+									button(id="deleteComment").delete Delete your review
 
 

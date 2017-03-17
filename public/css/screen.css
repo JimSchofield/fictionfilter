@@ -81,6 +81,9 @@ h4 {
 small {
   font-size: 0.8em; }
 
+.smallHyperlink {
+  font-size: .8em; }
+
 * {
   box-sizing: border-box; }
 
@@ -94,7 +97,7 @@ body {
 .pageContent {
   margin: 1.45em auto;
   padding: 16px;
-  max-width: 30em; }
+  max-width: 35em; }
 
 a {
   color: #c42847; }
@@ -169,9 +172,15 @@ a {
   display: inline-block;
   width: 20px; }
 
+.icon_small {
+  display: inline-block;
+  width: 20px;
+  margin: 0 4px; }
+
 .bookCover {
   display: block;
-  max-width: 200px; }
+  max-width: 200px;
+  margin: auto; }
 
 .searchBar {
   max-height: 60px;
@@ -219,16 +228,31 @@ input[type=text]:focus {
   margin: 16px 0px; }
 
 button {
+  display: inline-block;
   background: #e28413;
   border: 1px solid;
   outline: none;
   color: white;
   font-family: "Courier";
+  font-size: 14px;
   padding: 8px; }
+
+.button {
+  margin: 8px;
+  display: inline-block;
+  background: #e28413;
+  border: 1px solid;
+  padding: 0px 8px;
+  outline: none;
+  color: white;
+  font-family: "Courier";
+  font-size: 14px;
+  text-decoration: none; }
 
 .table {
   display: table;
-  border-spacing: 8px; }
+  border-spacing: 8px;
+  margin: auto; }
 
 .table-row {
   display: table-row; }
@@ -242,16 +266,44 @@ button {
   justify-content: center;
   flex-wrap: wrap; }
 
-.bookCard-inner-wrap > * {
-  padding: 16px; }
-
 .bookCard-inner-wrap-cover {
   display: block;
-  line-height: 0; }
+  line-height: 0;
+  flex-grow: 1; }
 
 .bookCard-inner-wrap-details {
   display: block;
   flex-grow: 1; }
+
+.bookCard-inner-ratings {
+  text-align: center;
+  padding-bottom: 27px; }
+
+.ratingsList {
+  margin: auto;
+  display: inline-block;
+  border: 1px solid #c42847;
+  padding: 16px; }
+
+.bookComments {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; }
+
+.bookComment {
+  width: 250px; }
+
+.reviewTitle > h3 {
+  margin: .5em auto; }
+
+.textBubble_inactive {
+  height: 0;
+  width: 0;
+  overflow: hidden; }
+
+.bookCard-reviews {
+  margin-top: 1.45em; }
 
 .hidden {
   display: none; }
