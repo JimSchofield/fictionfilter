@@ -247,7 +247,7 @@ router.post('/books/edit/:title', mid.requiresLogin, function(req, res, next) {
 	var currentDate = new Date();
 
 	var bookUpdates = {
-		"title": title,
+		"title": formUpdates.title,
 		"author": formUpdates.author,
 		"coverURL" : formUpdates.coverURL,
 		"publishedYear" : formUpdates.publishedYear,
@@ -258,11 +258,11 @@ router.post('/books/edit/:title', mid.requiresLogin, function(req, res, next) {
 	}
 
 
-	Book.update( { "title": title },
+	Book.findOneAndUpdate( { "title": title },
 					{ $set: bookUpdates},
 					function(err) {
 		if (err) return next(err);
-		res.redirect("/books/" + escape(title));
+		res.redirect("/books/" + escape(bookUpdates.title));
 	});
 });
 
@@ -379,23 +379,29 @@ router.post('/sendcomment/:title', mid.requiresLogin, function(req, res, next) {
 
 });
 
+// delete comment
 router.post("/deletecomment/:title/:username", mid.requiresLogin, function(req, res, next) {
 	var title = req.params.title,
 		username = req.params.username;
-	Book.update( {"title": title}, { $pull: { userReviews: { "username": username }}}, function(err) {
-		if (err) return next(err);
 
-		//remove book from user profile
-		User.update(
-			{"username": username},
-			{
-				$pull: { "recentReviews": title}
-			}, function() {
+	if (username === req.session.username) {
+		Book.update( {"title": title}, { $pull: { userReviews: { "username": username }}}, function(err) {
+			if (err) return next(err);
+			//remove book from user profile
+			User.update(
+				{"username": username},
+				{
+					$pull: { "recentReviews": title}
+				}, function() {
 
-				res.redirect('/books/' + escape(title));
+					res.redirect('/books/' + escape(title));
 
-			});
-	});
+				});
+		});
+	} else {
+		var error = new Error('You are not the author of this comment');
+		return next(error);
+	}
 });
 
 router.get("/flagcomment/:title/:username", mid.requiresLogin, function(req, res, next) {
