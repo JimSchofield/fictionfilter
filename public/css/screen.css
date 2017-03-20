@@ -265,6 +265,9 @@ button {
   font-size: 14px;
   text-decoration: none; }
 
+.delete {
+  background: #de3c4b; }
+
 .table {
   display: table;
   border-spacing: 8px;
@@ -312,6 +315,11 @@ button {
 
 .reviewTitle > h3 {
   margin: .5em auto; }
+
+.textBubble-text {
+  padding: 8px;
+  background: lightgray;
+  border-radius: 8px; }
 
 .textBubble_inactive {
   height: 0;
