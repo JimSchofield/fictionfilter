@@ -36,3 +36,23 @@ input[type=text]:focus {
 .addMargin {
 	margin: 16px 0px;
 }
+
+label {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+input[type=checkbox] {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+    vertical-align: middle;
+}
+
+.form-spacer {
+	margin-bottom: $LINE_HEIGHT;
+}
+
+input[type=radio] {
+	margin: 0 0 0 12px;
+}

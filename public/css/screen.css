@@ -227,6 +227,22 @@ input[type=text]:focus {
 .addMargin {
   margin: 16px 0px; }
 
+label {
+  display: inline-block;
+  vertical-align: middle; }
+
+input[type=checkbox] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle; }
+
+.form-spacer {
+  margin-bottom: 1.45em; }
+
+input[type=radio] {
+  margin: 0 0 0 12px; }
+
 button {
   display: inline-block;
   background: #e28413;

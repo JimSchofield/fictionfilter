@@ -6,128 +6,160 @@ block content
 		h1.pageHeading Create a review for #{ bookData.title }
 		div.contentBody
 			form(id="addReviewForm" method='POST' action='/sendcomment/' + bookData.title).form_table
-				div.form_row
+				div.form_row.form-spacer
 					div.form_col
 						label(for="substances") Substances:
-						select(name="substances")
-							option(value="na") 
-							option(value="0") 0
-							option(value="1") 1
-							option(value="2") 2
-							option(value="3") 3
-							option(value="4") 4
-							option(value="5") 5
+							input(type="radio" name="substances" value="0")
+							| 0
+							input(type="radio" name="substances" value="1") 
+							| 1
+							input(type="radio" name="substances" value="2") 
+							| 2
+							input(type="radio" name="substances" value="3") 
+							| 3
+							input(type="radio" name="substances" value="4") 
+							| 4
+							input(type="radio" name="substances" value="5") 
+							| 5
 						br
-						small.smallText Drugs, alcohol, or illegal substances
+						small Drugs, alcohol, or illegal substances
 					div.form_col
 						textarea(placeholder="Optional comments" name="subtancesComments").textInput
 				div.form_row
 					div.form_col
 						label(for="sex") Sex:
-						select(name="sex")
-							option(value="na")
-							option(value="0") 0
-							option(value="1") 1
-							option(value="2") 2
-							option(value="3") 3
-							option(value="4") 4
-							option(value="5") 5
+							input(type="radio" name="sex" value="0")
+							| 0
+							input(type="radio" name="sex" value="1") 
+							| 1
+							input(type="radio" name="sex" value="2") 
+							| 2
+							input(type="radio" name="sex" value="3") 
+							| 3
+							input(type="radio" name="sex" value="4") 
+							| 4
+							input(type="radio" name="sex" value="5") 
+							| 5
 						br
-						small.smallText Sexual acts or imagery				
+						small Sexual acts or imagery              
 					div.form_col
 						textarea(placeholder="Optional comments" name="sexComments").textInput
 				div.form_row
 					div.form_col
 						label(for="violence") Violence:
-						select(name="violence")
-							option(value="na")
-							option(value="0") 0
-							option(value="1") 1
-							option(value="2") 2
-							option(value="3") 3
-							option(value="4") 4
-							option(value="5") 5
+							input(type="radio" name="violence" value="0")
+							| 0
+							input(type="radio" name="violence" value="1") 
+							| 1
+							input(type="radio" name="violence" value="2") 
+							| 2
+							input(type="radio" name="violence" value="3") 
+							| 3
+							input(type="radio" name="violence" value="4") 
+							| 4
+							input(type="radio" name="violence" value="5") 
+							| 5
 						br
-						small.smallText Physical violence or gore 
+						small Physical violence or gore 
 					div.form_col
 						textarea(placeholder="Optional comments" name="violenceComments").textInput
 				div.form_row
 					div.form_col
 						label(for="language") Language:
-						select(name="language")
-							option(value="na")
-							option(value="0") 0
-							option(value="1") 1
-							option(value="2") 2
-							option(value="3") 3
-							option(value="4") 4
-							option(value="5") 5
+							input(type="radio" name="language" value="0")
+							| 0
+							input(type="radio" name="language" value="1") 
+							| 1
+							input(type="radio" name="language" value="2") 
+							| 2
+							input(type="radio" name="language" value="3") 
+							| 3
+							input(type="radio" name="language" value="4") 
+							| 4
+							input(type="radio" name="language" value="5") 
+							| 5
 						br
-						small.smallText Explicit language, foul or derogatory comments							
+						small Explicit language, foul or derogatory comments                          
 					div.form_col
 						textarea(placeholder="Optional comments" name="languageComments").textInput
 				div.form_row
 					div.form_col
 						label(for="abuse") Abuse:
-						select(name="abuse")
-							option(value="na")
-							option(value="0") 0
-							option(value="1") 1
-							option(value="2") 2
-							option(value="3") 3
-							option(value="4") 4
-							option(value="5") 5
+							input(type="radio" name="abuse" value="0")
+							| 0
+							input(type="radio" name="abuse" value="1") 
+							| 1
+							input(type="radio" name="abuse" value="2") 
+							| 2
+							input(type="radio" name="abuse" value="3") 
+							| 3
+							input(type="radio" name="abuse" value="4") 
+							| 4
+							input(type="radio" name="abuse" value="5") 
+							| 5
 						br
-						small.smallText Physical or emotional abuse						
+						small Physical or emotional abuse                     
 					div.form_col
 						textarea(placeholder="Optional comments" name="abuseComments").textInput
 				div.form_row
 					div.form_col
 						label(for="hate") Hate:
-						select(name="hate")
-							option(value="na")
-							option(value="0") 0
-							option(value="1") 1
-							option(value="2") 2
-							option(value="3") 3
-							option(value="4") 4
-							option(value="5") 5
+							input(type="radio" name="hate" value="0")
+							| 0
+							input(type="radio" name="hate" value="1") 
+							| 1
+							input(type="radio" name="hate" value="2") 
+							| 2
+							input(type="radio" name="hate" value="3") 
+							| 3
+							input(type="radio" name="hate" value="4") 
+							| 4
+							input(type="radio" name="hate" value="5") 
+							| 5
 						br
-						small.smallText Speech that attacks a person or group on the basis of things such as gender, race, religion, etc.					
+						small Speech that attacks a person or group on the basis of things such as gender, race, religion, etc.                   
 					div.form_col
 						textarea(placeholder="Optional comments" name="hateComments").textInput
 				div.form_row
 					div.form_col
 						label(for="immorality") Immorality:
-						select(name="immorality")
-							option(value="na")
-							option(value="0") 0
-							option(value="1") 1
-							option(value="2") 2
-							option(value="3") 3
-							option(value="4") 4
-							option(value="5") 5
+							input(type="radio" name="Immorality" value="0")
+							| 0
+							input(type="radio" name="Immorality" value="1") 
+							| 1
+							input(type="radio" name="Immorality" value="2") 
+							| 2
+							input(type="radio" name="Immorality" value="3") 
+							| 3
+							input(type="radio" name="Immorality" value="4") 
+							| 4
+							input(type="radio" name="Immorality" value="5") 
+							| 5
 						br
-						small.smallText Engaging in acts that may be culturally or traditionally viewed as morally wrong or illegal (for example: adultery)
+						small Engaging in acts that may be culturally or traditionally viewed as morally wrong or illegal (for example: adultery)
 					div.form_col
 						textarea(placeholder="Optional comments" name="immoralityComments").textInput
 				div.form_row
 					div.form_col
 						label(for="occult") Occult:
-						select(name="occult")
-							option(value="na")
-							option(value="0") 0
-							option(value="1") 1
-							option(value="2") 2
-							option(value="3") 3
-							option(value="4") 4
-							option(value="5") 5
+							input(type="radio" name="occult" value="0")
+							| 0
+							input(type="radio" name="occult" value="1") 
+							| 1
+							input(type="radio" name="occult" value="2") 
+							| 2
+							input(type="radio" name="occult" value="3") 
+							| 3
+							input(type="radio" name="occult" value="4") 
+							| 4
+							input(type="radio" name="occult" value="5") 
+							| 5
 						br
-						small.smallText Supernatural or magical elements or phenomena that may be attributed to evil or dark sources	
+						small Supernatural or magical elements or phenomena that may be attributed to evil or dark sources    
 					div.form_col
 						textarea(placeholder="Optional comments" name="occultComments").textInput
 				div.form_row
 					div.form_col
 						textarea(name="generalComments" placeholder="Optional general comments").textInput
 					div.form_col
-						button(type=submit id="addCommentSubmit").button Add this Review
+						button(type=submit id="addCommentSubmit") Add this Review

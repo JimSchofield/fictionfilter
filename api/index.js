@@ -107,16 +107,6 @@ router.post('/users', function(req, res, next) {
 	}
 });
 
-//GET: get list of users //REMOVE ON IMPLEMENT?
-router.get('/users', function(req, res, next) {
-
-	User.find({})
-			.exec(function(err, users) {
-				if(err) return next(err);
-				res.json(users);
-			});
-});
-
 //GET: /users/:username get a specific user
 router.get('/users/:username', function(req, res, next) {
 	var username = req.params.username;
@@ -140,10 +130,12 @@ router.get('/users/:username', function(req, res, next) {
 //PUT using post from a form update profile
 router.post('/users/update/:username', mid.requiresLogin, function(req, res, next) {
 	var name = req.params.username;
-	User.update( { "username": name }, { $set: req.body }, function(err) {
-		if (err) return next(err);
-		res.redirect("/profile");
-	});
+	if (name === req.session.username) {
+		User.update( { "username": name }, { $set: req.body }, function(err) {
+			if (err) return next(err);
+			res.redirect("/profile");
+		});
+	}
 })
 
 //GET Find most recent reviews for a user
@@ -262,8 +254,9 @@ router.post('/books/edit/:title', mid.requiresLogin, function(req, res, next) {
 		"pages" : formUpdates.pages,
 		"genres" : formUpdates.genres,
 		"dateUpdated": currentDate,
-		"lastUpdatedBy": req.session.username,
+		"lastUpdatedBy": req.session.username
 	}
+
 
 	Book.update( { "title": title },
 					{ $set: bookUpdates},
